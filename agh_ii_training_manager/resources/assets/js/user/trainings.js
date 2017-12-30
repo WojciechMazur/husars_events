@@ -1,5 +1,5 @@
 import * as $ from "jquery";
-import {showMessage} from "./utils";
+import {showMessage} from "../utils";
 
 
 $('.tbl-trainings tr').bind('click', function () {

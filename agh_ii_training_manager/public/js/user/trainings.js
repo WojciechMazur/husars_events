@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 19);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -10326,43 +10326,126 @@ return jQuery;
 
 /***/ }),
 
-/***/ 25:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(26);
-
-
-/***/ }),
-
-/***/ 26:
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["toogleCollapsable"] = toogleCollapsable;
+/* harmony export (immutable) */ __webpack_exports__["stringToDate"] = stringToDate;
+/* harmony export (immutable) */ __webpack_exports__["findTextInTable"] = findTextInTable;
+/* harmony export (immutable) */ __webpack_exports__["showMessage"] = showMessage;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
+function stringToDate(_date, _format) {
+    var delimiter = /[ :-]/;
+    var formatLowerCase = _format.toLowerCase();
+    var formatItems = formatLowerCase.split(delimiter);
+    var dateItems = _date.split(delimiter);
+    var monthIndex = formatItems.indexOf("mm");
+    var dayIndex = formatItems.indexOf("dd");
+    var yearIndex = formatItems.indexOf("yyyy");
+    var hourIndex = formatItems.indexOf("hh");
+    var minuteIndex = formatItems.indexOf("mm");
+    var secondIndex = formatItems.indexOf("ss");
+    var month = parseInt(dateItems[monthIndex]);
+    month -= 1;
+    var date = new Date(dateItems[yearIndex], month, dateItems[dayIndex], dateItems[hourIndex], dateItems[minuteIndex], dateItems[secondIndex]);
+    return date;
+}
+
+function findTextInTable(_search, _table) {
+
+    if (_table === undefined) _table = "table";
+    return __WEBPACK_IMPORTED_MODULE_0_jquery__(_table + " tr td").filter(function () {
+        return __WEBPACK_IMPORTED_MODULE_0_jquery__(this).text() === _search;
+    }).closest("tr");
+}
+
+function showMessage(message) {
+    var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'black';
+    var fade_in = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 500;
+    var delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1000;
+    var fade_out = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 500;
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery__('#message-text').css('color', color);
+    __WEBPACK_IMPORTED_MODULE_0_jquery__("#message-text").html(message).fadeIn(fade_in).delay(delay).fadeOut(fade_out);
+}
+
+/***/ }),
+
+/***/ 19:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(20);
 
 
-__WEBPACK_IMPORTED_MODULE_0_jquery__(function () {
-    __WEBPACK_IMPORTED_MODULE_0_jquery__('li:has(.collapsable)').find('.btn-expend').html('<i class="fa fa-plus" aria-hidden="true"></i>');
+/***/ }),
 
-    __WEBPACK_IMPORTED_MODULE_0_jquery__('.btn-expend').click(function (event) {
-        var parent = __WEBPACK_IMPORTED_MODULE_0_jquery__(this).parent();
-        var button = __WEBPACK_IMPORTED_MODULE_0_jquery__(parent).find('.btn-expend');
-        if (parent.has(event.target)) {
-            button.html(!__WEBPACK_IMPORTED_MODULE_0_jquery__(parent).find('.collapsable').first().is(':hidden') ? '<i class="fa fa-plus" aria-hidden="true"></i>' : '<i class="fa fa-minus" aria-hidden="true"></i>');
-            __WEBPACK_IMPORTED_MODULE_0_jquery__(parent).find('.collapsable').toggle('slow');
-        }
-        return false;
-    }).parent().find('.collapsable').hide();
+/***/ 20:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(1);
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_jquery__('.tbl-trainings tr').bind('click', function () {
+    var id = __WEBPACK_IMPORTED_MODULE_0_jquery__(this).children()[0].innerHTML;
+    __WEBPACK_IMPORTED_MODULE_0_jquery__["getJSON"](window.location.origin + "/trainings/" + id, function (data) {
+        var modal = __WEBPACK_IMPORTED_MODULE_0_jquery__('#modal');
+        var content = __WEBPACK_IMPORTED_MODULE_0_jquery__('#modal-content');
+        content.html("");
+        var limit_fillup = data['signed_in'] / data['capacity_limit'];
+        var limit_style = limit_fillup > 0.75 ? '#ff0000' : limit_fillup > 0.5 ? '#ffbf00' : '#00ff00';
+        var div = __WEBPACK_IMPORTED_MODULE_0_jquery__('<div id=training_details></div>');
+        div.append("<span id=\"date\">Date: <b>" + data['date'].substring(0, 16) + "</b></span>");
+        div.append("<span id=\"trainer\">Trainer: <b>" + data['trainer_details']['name'] + " " + data['trainer_details']['surname'] + "</b></span>");
+        div.append("<span id=\"trainer_spec\">Trainer specialization: <b>" + data['trainer_details']['specialization'] + "</b></span>");
+        div.append("<span id=\"duration\">Duration:<b> " + data['duration_minutes'] + " minutes</b></span>");
+        div.append("<span id=\"location\">Location:<b>" + data['location'] + "</b></span>");
+        div.append("<span id=\"description\">" + data['description'] + "</span>");
+        div.append("<span id=\"limits\">Participants limits: <b style=\"color: " + limit_style + "\">" + data['signed_in'] + "/" + data['capacity_limit'] + "</b></span>");
+        var btn_join = __WEBPACK_IMPORTED_MODULE_0_jquery__('<button id="btn-signin">Join</button>');
+        var btn_cancel = __WEBPACK_IMPORTED_MODULE_0_jquery__('<button id="btn-cancel" class="fa fa-times" value="&#xf00d"></button>');
+        btn_cancel.on('click', function () {
+            modal.toggle('fast');
+        });
+        btn_join.on('click', function () {
+            __WEBPACK_IMPORTED_MODULE_0_jquery__["ajax"]({
+                url: window.location.origin + "/trainings/reservation",
+                method: 'POST',
+                dataType: 'json',
+                data: {
+                    customer_id: user.id,
+                    training_id: id
+                },
+                success: function success(response) {
+                    switch (response) {
+                        case 208:
+                            Object(__WEBPACK_IMPORTED_MODULE_1__utils__["showMessage"])('Already joined to this training');break;
+                        default:
+                            Object(__WEBPACK_IMPORTED_MODULE_1__utils__["showMessage"])("Reservation successful", 'green');
+                    }
+                }
+            });
+            modal.toggle();
+        });
+        content.append(btn_cancel);
+        div.append(btn_join);
+        content.append(div);
+        modal.toggle();
+    });
 });
 
-function toogleCollapsable(obj) {
-    console.log(obj);
-    console.log(__WEBPACK_IMPORTED_MODULE_0_jquery__(obj));
-}
+__WEBPACK_IMPORTED_MODULE_0_jquery__["ajaxSetup"]({
+    headers: {
+        'X-CSRF-TOKEN': __WEBPACK_IMPORTED_MODULE_0_jquery__('meta[name="csrf-token"]').attr('content')
+    }
+});
 
 /***/ })
 

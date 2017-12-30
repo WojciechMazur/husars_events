@@ -1,6 +1,6 @@
 import * as $ from "jquery";
-import Customers from './admin/customers'
-import Orders from "./admin/orders";
+import Customers from './customers'
+import Orders from "./orders";
 
 const content = $('#admin-content');
 

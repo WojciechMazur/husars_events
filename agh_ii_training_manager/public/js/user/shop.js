@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -10326,43 +10326,132 @@ return jQuery;
 
 /***/ }),
 
-/***/ 25:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(26);
-
-
-/***/ }),
-
-/***/ 26:
+/***/ 1:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["toogleCollapsable"] = toogleCollapsable;
+/* harmony export (immutable) */ __webpack_exports__["stringToDate"] = stringToDate;
+/* harmony export (immutable) */ __webpack_exports__["findTextInTable"] = findTextInTable;
+/* harmony export (immutable) */ __webpack_exports__["showMessage"] = showMessage;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 
-
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__(function () {
-    __WEBPACK_IMPORTED_MODULE_0_jquery__('li:has(.collapsable)').find('.btn-expend').html('<i class="fa fa-plus" aria-hidden="true"></i>');
-
-    __WEBPACK_IMPORTED_MODULE_0_jquery__('.btn-expend').click(function (event) {
-        var parent = __WEBPACK_IMPORTED_MODULE_0_jquery__(this).parent();
-        var button = __WEBPACK_IMPORTED_MODULE_0_jquery__(parent).find('.btn-expend');
-        if (parent.has(event.target)) {
-            button.html(!__WEBPACK_IMPORTED_MODULE_0_jquery__(parent).find('.collapsable').first().is(':hidden') ? '<i class="fa fa-plus" aria-hidden="true"></i>' : '<i class="fa fa-minus" aria-hidden="true"></i>');
-            __WEBPACK_IMPORTED_MODULE_0_jquery__(parent).find('.collapsable').toggle('slow');
-        }
-        return false;
-    }).parent().find('.collapsable').hide();
-});
-
-function toogleCollapsable(obj) {
-    console.log(obj);
-    console.log(__WEBPACK_IMPORTED_MODULE_0_jquery__(obj));
+function stringToDate(_date, _format) {
+    var delimiter = /[ :-]/;
+    var formatLowerCase = _format.toLowerCase();
+    var formatItems = formatLowerCase.split(delimiter);
+    var dateItems = _date.split(delimiter);
+    var monthIndex = formatItems.indexOf("mm");
+    var dayIndex = formatItems.indexOf("dd");
+    var yearIndex = formatItems.indexOf("yyyy");
+    var hourIndex = formatItems.indexOf("hh");
+    var minuteIndex = formatItems.indexOf("mm");
+    var secondIndex = formatItems.indexOf("ss");
+    var month = parseInt(dateItems[monthIndex]);
+    month -= 1;
+    var date = new Date(dateItems[yearIndex], month, dateItems[dayIndex], dateItems[hourIndex], dateItems[minuteIndex], dateItems[secondIndex]);
+    return date;
 }
+
+function findTextInTable(_search, _table) {
+
+    if (_table === undefined) _table = "table";
+    return __WEBPACK_IMPORTED_MODULE_0_jquery__(_table + " tr td").filter(function () {
+        return __WEBPACK_IMPORTED_MODULE_0_jquery__(this).text() === _search;
+    }).closest("tr");
+}
+
+function showMessage(message) {
+    var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'black';
+    var fade_in = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 500;
+    var delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1000;
+    var fade_out = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 500;
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery__('#message-text').css('color', color);
+    __WEBPACK_IMPORTED_MODULE_0_jquery__("#message-text").html(message).fadeIn(fade_in).delay(delay).fadeOut(fade_out);
+}
+
+/***/ }),
+
+/***/ 17:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(18);
+
+
+/***/ }),
+
+/***/ 18:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(1);
+
+
+
+
+function applyQuantityChange() {
+    var _this = this;
+
+    var inputNode = null;
+    var subobjects = this.parentNode.childNodes;
+    for (var i = 0; i < subobjects.length; i++) {
+        if (subobjects.item(i).name === 'quantity-input') {
+            inputNode = subobjects.item(i);
+            break;
+        }
+    }
+    var objectId = inputNode.id.split('-').pop();
+    __WEBPACK_IMPORTED_MODULE_0_jquery__["ajax"]({
+        url: window.location.origin + '/shop/shopping-cart/edit',
+        method: 'PUT',
+        data: {
+            id: objectId,
+            key: 'quantity',
+            value: inputNode.value
+        },
+        success: function success(response) {
+            var responseObj = __WEBPACK_IMPORTED_MODULE_0_jquery__["parseJSON"](response);
+            //alert("Quantity of product changed");
+            __WEBPACK_IMPORTED_MODULE_0_jquery__('#shopping-cart-items').html('Shopping Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> ' + responseObj['totalQuantity']);
+            var priceElement = __WEBPACK_IMPORTED_MODULE_0_jquery__('#totalPrice');
+            var start = priceElement.html().indexOf('<strong>') + '<strong>'.length;
+            var end = priceElement.html().indexOf('</strong>');
+            var replacePrice = priceElement.html().substring(0, start) + responseObj['totalPrice'].toFixed(2) + ' PLN';
+            priceElement.html().substring(end);
+            priceElement.html(replacePrice);
+            var edited = responseObj['items'][objectId];
+            if (edited !== undefined) __WEBPACK_IMPORTED_MODULE_0_jquery__('#' + inputNode.id).closest('td').next().next().html(edited['value']);else __WEBPACK_IMPORTED_MODULE_0_jquery__(_this).parent().parent().remove();
+            Object(__WEBPACK_IMPORTED_MODULE_1__utils__["showMessage"])("Shopping cart was updated", 'green');
+        },
+        fail: function fail() {
+            alert("Unknown error accoured");
+        }
+
+    });
+}
+
+window.onload = function () {
+    if (window.location.href.split('/').pop() !== 'submit') {
+        var quantity_inputs = document.getElementsByClassName('btn-quantity-submit');
+        for (var i = 0; i < quantity_inputs.length; i++) {
+            quantity_inputs[i].addEventListener('click', applyQuantityChange);
+        }
+    }
+    __WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-submit-order').bind('click', function () {
+        window.location.replace(window.location.origin + '/shop/shopping-cart/submit');
+    });
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery__["ajaxSetup"]({
+        headers: {
+            'X-CSRF-TOKEN': __WEBPACK_IMPORTED_MODULE_0_jquery__('meta[name="csrf-token"]').attr('content')
+        }
+    });
+};
 
 /***/ })
 

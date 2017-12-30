@@ -95,5 +95,5 @@
     </form>
 
 
-    <script type="application/javascript" src="{{asset('/js/shop.js')}}"></script>
+    <script type="application/javascript" src="{{asset('/js/user/shop.js')}}"></script>
 @endsection

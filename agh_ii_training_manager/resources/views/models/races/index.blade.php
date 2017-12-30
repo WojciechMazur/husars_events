@@ -33,6 +33,6 @@
             @endforeach
         </table>
     </div>
-    <script src="{{asset('/js/user/trainings.js')}}"></script>
+    <script src="{{asset('/js/user/races.js')}}"></script>
 
 @endsection

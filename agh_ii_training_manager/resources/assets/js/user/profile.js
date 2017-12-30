@@ -1,5 +1,5 @@
 import * as $ from "jquery";
-import {showMessage} from "./utils";
+import {showMessage} from "../utils";
 
 $('.btn-remove-training-reservation').bind('click', function () {
    console.log($(this).val());

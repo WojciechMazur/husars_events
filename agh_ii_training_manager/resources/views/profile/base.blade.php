@@ -126,5 +126,5 @@
     </div>
 
     <script src="{{asset('/js/expandable_list.js')}}"></script>
-    <script src="{{asset('/js/profile.js')}}"></script>
+    <script src="{{asset('/js/user/profile.js')}}"></script>
 @endsection

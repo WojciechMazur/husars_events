@@ -1,6 +1,6 @@
 
 import * as $ from "jquery";
-import {showMessage} from "./utils";
+import {showMessage} from "../utils";
 
 
 function applyQuantityChange(){
