@@ -13,9 +13,9 @@ class CreateRefOrderItemStatusCodes extends Migration
      */
     public function up()
     {
-        Schema::create('ref_order_item_status_codes', function (Blueprint $table) {
-            $table->increments('order_item_status_code');
-            $table->string('order_item_status_description', 31);
+        Schema::create('ref_order_status_codes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description', 31);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateRefOrderItemStatusCodes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ref_order_item_status_codes');
+        Schema::dropIfExists('ref_order_status_codes');
     }
 }

@@ -17,16 +17,13 @@ class CreateOrderItemsTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->integer('order_id')->unsigned();
-            $table->integer('order_item_status_code')->unsigned();
             $table->unsignedSmallInteger('order_items_quantity');
-            $table->decimal('order_item_price',8,2);
             $table->string('order_details')->nullable();
         });
 
         Schema::table('order_items', function (Blueprint $table) {
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('order_item_status_code')->references('order_item_status_code')->on('ref_order_item_status_codes');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');;
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');;
         });
     }
 

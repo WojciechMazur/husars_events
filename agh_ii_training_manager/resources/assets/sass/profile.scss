@@ -1,0 +1,101 @@
+h2{
+  text-align: center;
+  -webkit-margin-before: 0.23em;
+  -webkit-margin-after: 0.23em;
+  font-size: 110%;
+}
+
+#customer-info, #profile-orders, #profile-trainings{
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding: 0.25rem 2rem 1rem;
+  background-color: #F2F2F2;
+  border-radius: 0.4rem;
+  border: 0.2rem #aaaaaa;
+
+  span{
+    width: 90%;
+    font-size: 110%;
+    text-align: center;
+  }
+}
+
+
+#profile-orders{
+  position: relative;
+  span{
+    display: inline-block;
+    border: 1px #aaaaaa;
+    text-align: right}
+  ul, ol{
+    -webkit-padding-start: 0;
+  }
+  .order-item, .order-item-label{
+    width: 100%;
+    border: 1px #000000;
+    list-style-type:none;
+    .recent-orders-id{width: 7rem; text-align: center}
+    .recent-orders-status{width: 14rem; text-align: center}
+    .recent-orders-created{width: 11rem;}
+    .recent-orders-value{width: 16rem;}
+    .btn-expend{width: 11rem}
+  }
+  .order-item{
+    padding-left: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background-color: #efefef;
+    padding-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .order-item-details{
+    padding-left: 1rem;
+   span{
+     text-align: left;
+   }
+    list-style-type: decimal;
+    .orders-item-name{width: 40rem}
+    .orders-item-quantity{width: 10rem; text-align: center}
+    .orders-item-price{width: 10rem}
+  }
+}
+
+#profile-trainings{
+  span{
+    display: inline-block;
+    border: 1px #aaaaaa;
+    text-align: left;
+  }
+
+  .training-item{
+    padding-left: 0.5rem;
+    list-style-type: decimal;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background-color: #efefef;
+    padding-top: 2px;
+    margin-bottom: 2px;
+    .btn-remove-training-reservation{
+      border-radius: 2px;
+      margin: 0.5rem;
+      position: relative;
+      left: 40%;
+    }
+  }
+  .training-details>li{
+    list-style-type: none;
+  }
+
+  #traing-item-labels {
+    -webkit-padding-start: 0;
+    span{text-align: center;}
+  }
+
+  .training-date{width: 10rem; text-align: left}
+  .training-location{width: 36rem; text-align: left}
+  .training-limit{width:9rem; text-align: center}
+  .btn-expend{width: 3rem; text-align: center}
+  .trainer{}
+  .trainer-spec{}
+}

@@ -1,0 +1,267 @@
+@import "variables";
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  color: $font-color;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+
+.product-grid {
+  width: 60em;
+  margin: 2rem auto;
+
+
+  &.product-grid--flexbox {
+    .product-grid__wrapper {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .product-grid__title {
+      height: auto;
+
+      &:after { display: none; }
+    }
+  }
+
+
+  &__wrapper {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
+  &__product-wrapper {
+    padding: 1rem;
+    float: left;
+  }
+
+
+  &__product {
+    padding: 1rem;
+    // width: 33.33333%;
+    // float: left;
+    position: relative;
+    cursor: pointer;
+    background: #fff;
+    //box-shadow: $product-box-shadow;
+    border-radius: 4px;
+
+    &:hover {
+      box-shadow: $product-box-shadow;
+      z-index: 50;
+
+      .product-grid__extend {
+        display: block;
+      }
+    }
+  }
+
+
+  // product image wrapper
+  &__img-wrapper {
+    width: 100%;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    height: 150px;
+  }
+
+
+  // product image
+  &__img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+  }
+
+
+  //	product title
+  &__title {
+    margin-top: .875rem;
+    display: block;
+    font-size: 1.125em;
+    color: $title-color;
+    height: 3em;
+    min-width: 14em;
+    overflow: hidden;
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 2.4em;
+      height: 1.5em; // magic number
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+      //background: red;
+    }
+  }
+
+  &__price {
+    color: $primary;
+    font-weight: bold;
+    letter-spacing: .4px;
+  }
+
+
+  // extend wrapper
+  &__extend-wrapper {
+    position: relative;
+  }
+
+  // extended elements
+  // show when hover .product-grid__product
+  &__extend {
+    display: none;
+    position: absolute;
+    padding: 0 1rem 1rem 1rem;
+    margin: .4375rem -1rem 0;
+    box-shadow: $product-box-shadow;
+    background: #fff;
+    border-radius: 0 0 4px 4px;
+
+    &:before {
+      content: "";
+      height: .875rem;
+      width: 100%;
+      position: absolute;
+      top: -.4375rem;
+      left: 0;
+      background: #fff;
+    }
+  }
+
+
+  // product description
+  &__description {
+    font-size: .875em;
+    //margin-top: .875rem;
+    margin-top: .4375rem;
+    margin-bottom: 0;
+  }
+
+
+  // buttons
+  &__btn {
+    display: inline-block;
+    font-size: .875em;
+    color: $font-color;
+    background: $light-gray;
+    padding: .5em .625em;
+    margin-top: .875rem;
+    margin-right: .625rem;
+    cursor: pointer;
+    border-radius: 4px;
+    a{
+      text-decoration: none;
+      color: black;
+    }
+
+    i.fa { margin-right: .3125rem;}
+  }
+
+
+  &__add-to-cart {
+    color: #fff;
+    background: $primary;
+
+    &:hover { background: lighten($primary, 10%); }
+  }
+
+  &__view {
+    color: $font-color;
+    background: $light-gray;
+
+    &:hover { background: lighten($light-gray, 10%); }
+  }
+}
+
+table{
+  border-collapse: separate;
+  width: 100%;
+  color: black;
+
+  caption{
+    background-color: #efefef;
+    font-size: 1.4rem;
+    text-align: left;
+    padding-left: 2rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+  th, td{
+    text-align: left;
+    padding: 8px;
+  }
+  tr:hover{background-color: #f5f5f5}
+  tr:nth-child(even) {background-color: #f2f2f2}
+
+  th{
+    background-color: deepskyblue;
+    color: white;
+  }
+  a{text-decoration: none; color: black}
+  button{
+    background: none;
+    border: none;
+    font-size: 20px;
+  }
+
+  .col-quantity{
+    width: 7rem;
+    button{
+      margin-left: 4px;
+      color: green;
+      background-color: whitesmoke;
+    }
+  }
+}
+
+#order-summary{
+  border-width: 0.4rem;
+  background-color: #e3e3e3;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 90%;
+  left: 5%;
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: black;
+  font-size: 115%;
+}
+
+#totalPrice{
+float: right;
+  padding: 10px 30px 10px 10px;
+  font-size: 18px;
+}
+
+.form-group{
+  display: block;
+  margin: 10px;
+  label{
+    display: inline-block;
+   width: 150px;
+    text-align: right;
+  }
+  input{
+    width: 300px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 3px;
+    font-size: 16px;
+  }
+  #additional_info{
+    width: 75%;
+    height: 150px;
+  }
+}

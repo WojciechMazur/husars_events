@@ -16,7 +16,7 @@ class CreateShipmentsTable extends Migration
         Schema::create('shipments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order_id')->unsigned();
-            $table->integer('invoie_number')->unsigned();
+            $table->integer('invoice_number')->unsigned();
             $table->unsignedInteger('shipment_tracking_number');
             $table->dateTime('shipment_date');
             $table->string('shipment_details',255)->nullable();
@@ -24,7 +24,7 @@ class CreateShipmentsTable extends Migration
 
         Schema::table('shipments', function (Blueprint $table) {
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('invoie_number')->references('id')->on('invoices');
+            $table->foreign('invoice_number')->references('id')->on('invoices');
         });
     }
 
@@ -35,6 +35,11 @@ class CreateShipmentsTable extends Migration
      */
     public function down()
     {
+        Schema::table('shipments', function (Blueprint $table){
+            $table->dropForeign(['order_id']);
+            $table->dropForeign(['invoice_number']);
+        });
+
         Schema::dropIfExists('shipments');
     }
 }

@@ -1,0 +1,57 @@
+.tbl-trainings{
+  width: 100%;
+  text-align: right;
+  border-collapse: collapse;
+  td, th{
+    border: 1px solid #eee;
+    padding: 5px;
+  }
+  tr:nth-child(even){
+    background-color: #f2f2f2;
+  }
+  tr:hover{
+    background-color: #ddd;
+  }
+
+  th{
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-align: center;
+    background-color: grey;
+    color: white;
+  }
+}
+
+#modal {
+  #modal-content {
+    #training_details {
+      height: 11rem;
+      span {
+        position: absolute;
+        padding: 0.5rem 1rem;
+        text-align: left;
+      }
+      #date {       left: 0;  top: 1rem }
+      #location {   left: 0;  top: 2.5rem }
+      #trainer {    left: 40rem;top: 1rem }
+      #trainer_spec{left: 40rem; top: 2.5rem }
+      #duration {   left: 0; top: 5rem }
+      #limits {     left: 12.5rem; top: 5rem}
+      #description {left: 0;top: 7.5rem}
+
+      #btn-signin{
+        bottom: 0.5rem;
+        left: 45%;
+      }
+
+      #btn-signin {
+        font-size: 130%;
+        width: 10%;
+        bottom: 0.5rem;
+        left: 45%;
+        border: 1px solid #ddd;
+        background-color: #eee;
+      }
+    }
+  }
+}

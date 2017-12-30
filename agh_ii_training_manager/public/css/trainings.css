@@ -1,0 +1,87 @@
+.tbl-trainings {
+  width: 100%;
+  text-align: right;
+  border-collapse: collapse;
+}
+
+.tbl-trainings td,
+.tbl-trainings th {
+  border: 1px solid #eee;
+  padding: 5px;
+}
+
+.tbl-trainings tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tbl-trainings tr:hover {
+  background-color: #ddd;
+}
+
+.tbl-trainings th {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  text-align: center;
+  background-color: grey;
+  color: white;
+}
+
+#modal #modal-content #training_details {
+  height: 11rem;
+}
+
+#modal #modal-content #training_details span {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  text-align: left;
+}
+
+#modal #modal-content #training_details #date {
+  left: 0;
+  top: 1rem;
+}
+
+#modal #modal-content #training_details #location {
+  left: 0;
+  top: 2.5rem;
+}
+
+#modal #modal-content #training_details #trainer {
+  left: 40rem;
+  top: 1rem;
+}
+
+#modal #modal-content #training_details #trainer_spec {
+  left: 40rem;
+  top: 2.5rem;
+}
+
+#modal #modal-content #training_details #duration {
+  left: 0;
+  top: 5rem;
+}
+
+#modal #modal-content #training_details #limits {
+  left: 12.5rem;
+  top: 5rem;
+}
+
+#modal #modal-content #training_details #description {
+  left: 0;
+  top: 7.5rem;
+}
+
+#modal #modal-content #training_details #btn-signin {
+  bottom: 0.5rem;
+  left: 45%;
+}
+
+#modal #modal-content #training_details #btn-signin {
+  font-size: 130%;
+  width: 10%;
+  bottom: 0.5rem;
+  left: 45%;
+  border: 1px solid #ddd;
+  background-color: #eee;
+}
+

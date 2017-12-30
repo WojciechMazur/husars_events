@@ -16,14 +16,26 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('customer_id');
-            $table->unsignedInteger('order_status_code');
-            $table->dateTime('date_order_placed');
+            $table->unsignedInteger('status_code');
+            $table->decimal('total_price', 8, 2);
             $table->string('order_details',255)->nullable();
+            $table->string("first_name", 30);
+            $table->string("second_name", 30)->nullable();
+            $table->string("surname", 40);
+            $table->string("address");
+            $table->string("city");
+            $table->string("state");
+            $table->string("country");
+            $table->string("email")->nullable();
+            $table->string("phone")->nullable();
+            $table->string("zip_code");
+            $table->string("nip")->nullable();
+            $table->text('additional_information')->nullable();
+            $table->timestamps();
         });
 
         Schema::table('orders', function (Blueprint $table) {
-            $table->foreign('customer_id')->references('id')->on('users');
-            $table->foreign('order_status_code')->references('order_item_status_code')->on('ref_order_item_status_codes');
+            $table->foreign('status_code')->references('id')->on('ref_order_status_codes');
         });
     }
 
@@ -34,6 +46,9 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
+        Schema::table('orders', function (Blueprint $table){
+            $table->dropForeign(['status_code']);
+        });
         Schema::dropIfExists('orders');
     }
 }

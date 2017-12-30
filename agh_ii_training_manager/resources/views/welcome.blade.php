@@ -69,13 +69,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <label for="login-username-textfield">Username</label>
-                    <input type="text" id="login-username-textfield">
-                    <br>
-                    <label for="login-password-textfield">Password</label>
-                    <input type="password" id="login-password-textfield">
-                    <br>
-                    <input type="submit" value="Login">
+                    <h1>Welcome</h1>
                 </div>
 
                 </div>

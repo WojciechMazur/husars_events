@@ -1,0 +1,271 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  color: #777;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.product-grid {
+  width: 60em;
+  margin: 2rem auto;
+}
+
+.product-grid.product-grid--flexbox .product-grid__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.product-grid.product-grid--flexbox .product-grid__title {
+  height: auto;
+}
+
+.product-grid.product-grid--flexbox .product-grid__title:after {
+  display: none;
+}
+
+.product-grid__wrapper {
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.product-grid__product-wrapper {
+  padding: 1rem;
+  float: left;
+}
+
+.product-grid__product {
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.product-grid__product:hover {
+  -webkit-box-shadow: 0px 0px 0px 1px #eee;
+          box-shadow: 0px 0px 0px 1px #eee;
+  z-index: 50;
+}
+
+.product-grid__product:hover .product-grid__extend {
+  display: block;
+}
+
+.product-grid__img-wrapper {
+  width: 100%;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  height: 150px;
+}
+
+.product-grid__img {
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+.product-grid__title {
+  margin-top: .875rem;
+  display: block;
+  font-size: 1.125em;
+  color: #222;
+  height: 3em;
+  min-width: 14em;
+  overflow: hidden;
+  position: relative;
+}
+
+.product-grid__title:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2.4em;
+  height: 1.5em;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(50%, white));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%);
+}
+
+.product-grid__price {
+  color: #E91E63;
+  font-weight: bold;
+  letter-spacing: .4px;
+}
+
+.product-grid__extend-wrapper {
+  position: relative;
+}
+
+.product-grid__extend {
+  display: none;
+  position: absolute;
+  padding: 0 1rem 1rem 1rem;
+  margin: .4375rem -1rem 0;
+  -webkit-box-shadow: 0px 0px 0px 1px #eee;
+          box-shadow: 0px 0px 0px 1px #eee;
+  background: #fff;
+  border-radius: 0 0 4px 4px;
+}
+
+.product-grid__extend:before {
+  content: "";
+  height: .875rem;
+  width: 100%;
+  position: absolute;
+  top: -.4375rem;
+  left: 0;
+  background: #fff;
+}
+
+.product-grid__description {
+  font-size: .875em;
+  margin-top: .4375rem;
+  margin-bottom: 0;
+}
+
+.product-grid__btn {
+  display: inline-block;
+  font-size: .875em;
+  color: #777;
+  background: #eee;
+  padding: .5em .625em;
+  margin-top: .875rem;
+  margin-right: .625rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.product-grid__btn a {
+  text-decoration: none;
+  color: black;
+}
+
+.product-grid__btn i.fa {
+  margin-right: .3125rem;
+}
+
+.product-grid__add-to-cart {
+  color: #fff;
+  background: #E91E63;
+}
+
+.product-grid__add-to-cart:hover {
+  background: #ee4c83;
+}
+
+.product-grid__view {
+  color: #777;
+  background: #eee;
+}
+
+.product-grid__view:hover {
+  background: white;
+}
+
+table {
+  border-collapse: separate;
+  width: 100%;
+  color: black;
+}
+
+table caption {
+  background-color: #efefef;
+  font-size: 1.4rem;
+  text-align: left;
+  padding-left: 2rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+table th,
+table td {
+  text-align: left;
+  padding: 8px;
+}
+
+table tr:hover {
+  background-color: #f5f5f5;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table th {
+  background-color: deepskyblue;
+  color: white;
+}
+
+table a {
+  text-decoration: none;
+  color: black;
+}
+
+table button {
+  background: none;
+  border: none;
+  font-size: 20px;
+}
+
+table .col-quantity {
+  width: 7rem;
+}
+
+table .col-quantity button {
+  margin-left: 4px;
+  color: green;
+  background-color: whitesmoke;
+}
+
+#order-summary {
+  border-width: 0.4rem;
+  background-color: #e3e3e3;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 90%;
+  left: 5%;
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: black;
+  font-size: 115%;
+}
+
+#totalPrice {
+  float: right;
+  padding: 10px 30px 10px 10px;
+  font-size: 18px;
+}
+
+.form-group {
+  display: block;
+  margin: 10px;
+}
+
+.form-group label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+}
+
+.form-group input {
+  width: 300px;
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.form-group #additional_info {
+  width: 75%;
+  height: 150px;
+}
+

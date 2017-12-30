@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Customer;
 use App\Http\Controllers\Controller;
 use DebugBar\DebugBar;
 use Illuminate\Contracts\Logging\Log;
@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -51,9 +51,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'first_name'    => 'required|string|max:255',
+            'second_name'   => 'string|nullable|max:255',
+            'surname'       => 'required|string|max:255',
+            'email'         => 'required|string|email|max:255|unique:customers',
+            'password'      => 'required|string|min:6|confirmed',
+            'address'       => 'required|string|min:8',
+            'city'          => 'required|string',
+            'state'         => 'required|string',
+            'country'       => 'required|string',
+            'phone'         => 'required|digits_between:6,10|unique:customers',
+            'zip-code'      => 'required|alpha_dash'
         ]);
     }
 
@@ -61,20 +69,23 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array $data
-     * @return \App\User
+     * @return \App\Customer
      */
     protected function create(array $data)
     {
-
-        try {
-            return User::create([
-                'username' => $data['username'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password']),
+        app('debugbar')->warning($data);
+            return Customer::create([
+                'first_name'    => $data['first_name' ],
+                'second_name'   => $data['second_name'],
+                'surname'       => $data['surname'    ],
+                'email'         => $data['email'      ],
+                'password'      => bcrypt($data['password']),
+                'address'       => $data['address'    ],
+                'city'          => $data['city'       ],
+                'state'         => $data['state'      ],
+                'country'       => $data['country'    ],
+                'phone'         => $data['phone'      ],
+                'zip-code'      => $data['zip-code'   ]
             ]);
-        } catch (Exception $e) {
-            Log::error($e);
-        }
-        return null;
     }
 }

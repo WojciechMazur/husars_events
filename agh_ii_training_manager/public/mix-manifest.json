@@ -1,0 +1,17 @@
+{
+    "/js/admin.js": "/js/admin.js",
+    "/css/admin.css": "/css/admin.css",
+    "/css/base.css": "/css/base.css",
+    "/css/product_tiles.css": "/css/product_tiles.css",
+    "/css/font-awesome.css": "/css/font-awesome.css",
+    "/css/profile.css": "/css/profile.css",
+    "/css/trainings.css": "/css/trainings.css",
+    "/js/admin/orders.js": "/js/admin/orders.js",
+    "/js/trainings.js": "/js/trainings.js",
+    "/js/shop.js": "/js/shop.js",
+    "/js/admin/customers.js": "/js/admin/customers.js",
+    "/js/utils.js": "/js/utils.js",
+    "/js/profile.js": "/js/profile.js",
+    "/js/jquery-3.2.1.js": "/js/jquery-3.2.1.js",
+    "/js/expandable_list.js": "/js/expandable_list.js"
+}

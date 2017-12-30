@@ -45,11 +45,16 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+
+        'web_admin'=>[
+            'driver'=> 'session',
+            'provider' => 'admins',
+        ]
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | User Providers
+    | Customer Providers
     |--------------------------------------------------------------------------
     |
     | All authentication drivers have a user provider. This defines how the
@@ -67,8 +72,13 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
+            'model' => App\Customer::class,
+             ],
+
+        'admins' => [
+            'driver'=> 'eloquent',
+            'model' => App\Admin::class,
+        ]
 
         // 'users' => [
         //     'driver' => 'database',

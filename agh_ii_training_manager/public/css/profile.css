@@ -1,0 +1,161 @@
+h2 {
+  text-align: center;
+  -webkit-margin-before: 0.23em;
+  -webkit-margin-after: 0.23em;
+  font-size: 110%;
+}
+
+#customer-info,
+#profile-orders,
+#profile-trainings {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding: 0.25rem 2rem 1rem;
+  background-color: #F2F2F2;
+  border-radius: 0.4rem;
+  border: 0.2rem #aaaaaa;
+}
+
+#customer-info span,
+#profile-orders span,
+#profile-trainings span {
+  width: 90%;
+  font-size: 110%;
+  text-align: center;
+}
+
+#profile-orders {
+  position: relative;
+}
+
+#profile-orders span {
+  display: inline-block;
+  border: 1px #aaaaaa;
+  text-align: right;
+}
+
+#profile-orders ul,
+#profile-orders ol {
+  -webkit-padding-start: 0;
+}
+
+#profile-orders .order-item,
+#profile-orders .order-item-label {
+  width: 100%;
+  border: 1px #000000;
+  list-style-type: none;
+}
+
+#profile-orders .order-item .recent-orders-id,
+#profile-orders .order-item-label .recent-orders-id {
+  width: 7rem;
+  text-align: center;
+}
+
+#profile-orders .order-item .recent-orders-status,
+#profile-orders .order-item-label .recent-orders-status {
+  width: 14rem;
+  text-align: center;
+}
+
+#profile-orders .order-item .recent-orders-created,
+#profile-orders .order-item-label .recent-orders-created {
+  width: 11rem;
+}
+
+#profile-orders .order-item .recent-orders-value,
+#profile-orders .order-item-label .recent-orders-value {
+  width: 16rem;
+}
+
+#profile-orders .order-item .btn-expend,
+#profile-orders .order-item-label .btn-expend {
+  width: 11rem;
+}
+
+#profile-orders .order-item {
+  padding-left: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  background-color: #efefef;
+  padding-top: 2px;
+  margin-bottom: 2px;
+}
+
+#profile-orders .order-item-details {
+  padding-left: 1rem;
+  list-style-type: decimal;
+}
+
+#profile-orders .order-item-details span {
+  text-align: left;
+}
+
+#profile-orders .order-item-details .orders-item-name {
+  width: 40rem;
+}
+
+#profile-orders .order-item-details .orders-item-quantity {
+  width: 10rem;
+  text-align: center;
+}
+
+#profile-orders .order-item-details .orders-item-price {
+  width: 10rem;
+}
+
+#profile-trainings span {
+  display: inline-block;
+  border: 1px #aaaaaa;
+  text-align: left;
+}
+
+#profile-trainings .training-item {
+  padding-left: 0.5rem;
+  list-style-type: decimal;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  background-color: #efefef;
+  padding-top: 2px;
+  margin-bottom: 2px;
+}
+
+#profile-trainings .training-item .btn-remove-training-reservation {
+  border-radius: 2px;
+  margin: 0.5rem;
+  position: relative;
+  left: 40%;
+}
+
+#profile-trainings .training-details > li {
+  list-style-type: none;
+}
+
+#profile-trainings #traing-item-labels {
+  -webkit-padding-start: 0;
+}
+
+#profile-trainings #traing-item-labels span {
+  text-align: center;
+}
+
+#profile-trainings .training-date {
+  width: 10rem;
+  text-align: left;
+}
+
+#profile-trainings .training-location {
+  width: 36rem;
+  text-align: left;
+}
+
+#profile-trainings .training-limit {
+  width: 9rem;
+  text-align: center;
+}
+
+#profile-trainings .btn-expend {
+  width: 3rem;
+  text-align: center;
+}
+
