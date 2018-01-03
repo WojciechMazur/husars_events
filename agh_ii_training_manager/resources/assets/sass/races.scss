@@ -1,0 +1,66 @@
+.tbl-races{
+  width: 100%;
+  text-align: right;
+  border-collapse: collapse;
+  td, th{
+    border: 1px solid #eee;
+    padding: 5px;
+  }
+  tr:nth-child(even){
+    background-color: #f2f2f2;
+  }
+  tr:hover{
+    background-color: #ddd;
+  }
+
+  th{
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-align: center;
+    background-color: grey;
+    color: white;
+  }
+}
+
+#modal {
+  #modal-content {
+    #race_details {
+      height: 15rem;
+      span {
+        position: absolute;
+        padding: 0.5rem 1rem;
+        text-align: left;
+      }
+      #date {       left: 0;  top: 1rem }
+      #name {       left: 0;  top: 2.5rem }
+      #location {   left: 0;  top: 4rem }
+      #distance {   left: 0; top: 5.5rem }
+      #limits {     left: 8rem; top: 7rem}
+      #description {left: 0;top: 10rem}
+      #heats       {
+        position: absolute;
+        bottom: 3rem;
+        left: 43%;
+        width: 15rem;
+        height: 2rem;
+        border-radius: 2px;
+        padding-left: 0.5rem;
+      }
+
+      #btn-signin{
+        bottom: 0.5rem;
+        left: 45%;
+        border-radius: 2px;
+      }
+
+      #btn-signin {
+        font-size: 130%;
+        width: 10%;
+        bottom: 0.5rem;
+        left: 45%;
+        border: 1px solid #ddd;
+        background-color: #eee;
+      }
+    }
+  }
+}

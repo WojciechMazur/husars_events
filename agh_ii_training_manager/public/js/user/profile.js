@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 21);
+/******/ 	return __webpack_require__(__webpack_require__.s = 22);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -10374,15 +10374,15 @@ function showMessage(message) {
 
 /***/ }),
 
-/***/ 21:
+/***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(22);
+module.exports = __webpack_require__(23);
 
 
 /***/ }),
 
-/***/ 22:
+/***/ 23:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10396,8 +10396,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __WEBPACK_IMPORTED_MODULE_0_jquery__('.btn-remove-training-reservation').bind('click', function () {
     var _this = this;
 
-    console.log(__WEBPACK_IMPORTED_MODULE_0_jquery__(this).val());
-
     __WEBPACK_IMPORTED_MODULE_0_jquery__["ajax"]({
         url: window.location.origin + "/trainings/reservation/" + __WEBPACK_IMPORTED_MODULE_0_jquery__(this).val(),
         method: 'DELETE',
@@ -10405,13 +10403,36 @@ __WEBPACK_IMPORTED_MODULE_0_jquery__('.btn-remove-training-reservation').bind('c
             'X-CSRF-TOKEN': __WEBPACK_IMPORTED_MODULE_0_jquery__('meta[name="csrf-token"]').attr('content')
         },
         success: function success(response) {
-            console.log(response);
             Object(__WEBPACK_IMPORTED_MODULE_1__utils__["showMessage"])("Reservation deleted");
             var rootElement = __WEBPACK_IMPORTED_MODULE_0_jquery__(__WEBPACK_IMPORTED_MODULE_0_jquery__(_this).parent().parent());
             rootElement.find('.collapsable').toggle('slow');
             var btn_expend = rootElement.parent().find('.btn-expend');
             btn_expend.html('<i class="fa fa-plus" aria-hidden="true"></i>');
 
+            rootElement.parent().remove();
+        },
+        fail: function fail(response) {
+            Object(__WEBPACK_IMPORTED_MODULE_1__utils__["showMessage"])("Some problem accoured. Please, try again.");
+        }
+    });
+});
+
+__WEBPACK_IMPORTED_MODULE_0_jquery__('.race_signout').bind('click', function () {
+    var _this2 = this;
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery__["ajax"]({
+        url: window.location.origin + "//races/register/" + __WEBPACK_IMPORTED_MODULE_0_jquery__(this).val(),
+        method: 'DELETE',
+        headers: {
+            'X-CSRF-TOKEN': __WEBPACK_IMPORTED_MODULE_0_jquery__('meta[name="csrf-token"]').attr('content')
+        },
+        success: function success(response) {
+            console.log(response);
+            Object(__WEBPACK_IMPORTED_MODULE_1__utils__["showMessage"])("Registration canceled");
+            var rootElement = __WEBPACK_IMPORTED_MODULE_0_jquery__(__WEBPACK_IMPORTED_MODULE_0_jquery__(_this2).parent().parent());
+            rootElement.find('.collapsable').toggle('slow');
+            var btn_expend = rootElement.parent().find('.btn-expend');
+            btn_expend.html('<i class="fa fa-plus" aria-hidden="true"></i>');
             rootElement.parent().remove();
         },
         fail: function fail(response) {

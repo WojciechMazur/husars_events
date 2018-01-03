@@ -3,16 +3,17 @@
     "/css/admin.css": "/css/admin.css",
     "/css/base.css": "/css/base.css",
     "/css/product_tiles.css": "/css/product_tiles.css",
-    "/css/font-awesome.css": "/css/font-awesome.css",
     "/css/profile.css": "/css/profile.css",
     "/css/trainings.css": "/css/trainings.css",
-    "/js/admin/orders.js": "/js/admin/orders.js",
+    "/css/races.css": "/css/races.css",
+    "/css/font-awesome.css": "/css/font-awesome.css",
+    "/js/a1dmin/orders.js": "/js/a1dmin/orders.js",
     "/js/user/trainings.js": "/js/user/trainings.js",
     "/js/user/shop.js": "/js/user/shop.js",
+    "/js/user/races.js": "/js/user/races.js",
     "/js/user/profile.js": "/js/user/profile.js",
     "/js/admin/customers.js": "/js/admin/customers.js",
     "/js/utils.js": "/js/utils.js",
     "/js/jquery-3.2.1.js": "/js/jquery-3.2.1.js",
-    "/js/expandable_list.js": "/js/expandable_list.js",
-    "/js/user/races.js": "/js/user/races.js"
+    "/js/expandable_list.js": "/js/expandable_list.js"
 }

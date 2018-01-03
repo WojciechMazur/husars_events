@@ -33,10 +33,6 @@ class CreateTrainingReservationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('training_reservations', function (Blueprint $table){
-            $table->dropForeign('training_id');
-            $table->dropForeign('customer_id');
-        });
         Schema::dropIfExists('training_reservations');
     }
 }

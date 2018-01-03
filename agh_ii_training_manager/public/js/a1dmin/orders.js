@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -10399,109 +10399,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(1);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-var Customers = function () {
-    function Customers() {
-        _classCallCheck(this, Customers);
-    }
-
-    _createClass(Customers, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("");
-            __WEBPACK_IMPORTED_MODULE_0_jquery__["getJSON"](window.location.origin + '//users', function (data) {
-                var now = new Date();
-                var tr = void 0;
-
-                var table = __WEBPACK_IMPORTED_MODULE_0_jquery__("<table class='admin-table' id='tbl-customers'/>");
-                table.append("<tr>\n    <th>Id</th>\n    <th>First Name</th>\n    <th>Surname</th>\n    <th>Email</th>\n    <th>Created</th>\n    <th>Updated</th>\n    <th> </th>\n    <th> </th>\n</tr>");
-                for (var i = 0; i < data.length; i++) {
-                    var btn_edit = __WEBPACK_IMPORTED_MODULE_0_jquery__("<button class='btn-edit'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>");
-                    btn_edit.on('click', function () {
-                        Customers.edit(__WEBPACK_IMPORTED_MODULE_0_jquery__(this).parent().parent().find('td:first').text());
-                    });
-                    var btn_delete = __WEBPACK_IMPORTED_MODULE_0_jquery__("<button class='btn-delete'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></button>");
-                    btn_delete.on('click', function () {
-                        Customers.delete(__WEBPACK_IMPORTED_MODULE_0_jquery__(this).parent().parent().find('td:first').text());
-                    });
-
-                    tr = __WEBPACK_IMPORTED_MODULE_0_jquery__('<tr/>');
-                    tr.append("<td>" + data[i].id + "</td>");
-                    tr.append("<td>" + data[i].first_name + "</td>");
-                    tr.append("<td>" + data[i].surname + "</td>");
-                    tr.append("<td>" + data[i].email + "</td>");
-                    tr.append("<td>" + Math.floor((now.getTime() - __WEBPACK_IMPORTED_MODULE_1__utils__["stringToDate"](data[i].created_at, 'YYYY-MM-DD HH:MM:SS')) / 86400000) + " days ago </td>");
-                    tr.append("<td>" + Math.floor((now.getTime() - __WEBPACK_IMPORTED_MODULE_1__utils__["stringToDate"](data[i].updated_at, 'YYYY-MM-DD HH:MM:SS')) / 86400000) + " days ago </td>");
-                    tr.append(__WEBPACK_IMPORTED_MODULE_0_jquery__("<td></td>").append(btn_edit));
-                    tr.append(__WEBPACK_IMPORTED_MODULE_0_jquery__("<td></td>").append(btn_delete));
-
-                    table.append(tr);
-                }
-                content.append(table);
-            });
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {
-            __WEBPACK_IMPORTED_MODULE_0_jquery__["getJSON"](window.location.origin + "/users/" + id, function (data) {
-                Customers.createEditForm(data);
-            });
-        }
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_0_jquery__["ajax"]({
-                url: window.location.origin + "/users/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_2__utils__["findTextInTable"])(id, "#tbl-customers");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(user) {
-            var zip_code = user['zip-code'];
-            var modal = __WEBPACK_IMPORTED_MODULE_0_jquery__('#modal');
-            var modalContent = __WEBPACK_IMPORTED_MODULE_0_jquery__('#modal-content');
-            var form = __WEBPACK_IMPORTED_MODULE_0_jquery__("\n                <form method=\"POST\" action=\"/users/" + user.id + "\" class=\"modal-content\">\n                <input type=\"hidden\" name=\"_method\" value=\"PUT\">\n                <label for=\"first_name\">First name</label>  <input type=\"text\" name=\"first_name\" value=\"" + user.first_name + "\">\n                <label for=\"second_name\">Second name</label><input type=\"text\" name=\"second_name\" value=\"" + user.second_name + "\"><br>\n                <label for=\"surname\">Surname</label>        <input type=\"text\" name=\"surname\" value=\"" + user.surname + "\"><br>\n                <label for=\"email\">Email</label>            <input type=\"email\" name=\"email\" value=\"" + user.email + "\"><br>\n                <label for=\"phone\">Phone</label>            <input type=\"tel\"  name=\"phone\" value=\"" + user.phone + "\"><br>\n                <label for=\"country\">Country</label>        <input type=\"text\" name=\"country\" value=\"" + user.country + "\">\n                <label for=\"state\">State</label>            <input type=\"text\" name=\"state\" value=\"" + user.state + "\"><br>\n                <label for=\"city\">City</label>              <input type=\"text\" name=\"city\" value=\"" + user.city + "\">\n                <label for=\"address\">Address</label>        <input type=\"text\" name=\"address\" value=\"" + user.address + "\"><br>\n                <label for=\"zip-code\">Zip-code</label>      <input type=\"text\" name=\"zip_code\" value=\"" + zip_code + "\"><br>\n                <label for=\"password\">Password</label>      <input type=\"text\" name=\"password\"><br>\n                <input type=\"hidden\" name=\"_token\" value=\"" + __WEBPACK_IMPORTED_MODULE_0_jquery__('meta[name=csrf-token]').attr('content') + "\">\n                <input type=\"submit\" id=\"btn-submit\" class=\"fa fa-floppy-o\" value=&#xf0c7>\n                <input type=\"button\" id=\"btn-cancel\" class=\"fa fa-times\" value=&#xf00d>\n                </form>");
-            form.find('#btn-cancel').on('click', function () {
-                modal.toggle('fast');
-            });
-
-            modalContent.html("").append(form);
-            modal.toggle('fast');
-        }
-    }]);
-
-    return Customers;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (Customers);
-
-/***/ }),
+/* 3 */,
 /* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27790,90 +27688,21 @@ module.exports = g;
 
 
 /***/ }),
-/* 7 */
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(8);
-__webpack_require__(9);
-__webpack_require__(10);
-__webpack_require__(11);
-__webpack_require__(12);
-__webpack_require__(13);
-__webpack_require__(14);
-module.exports = __webpack_require__(15);
+module.exports = __webpack_require__(4);
 
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__customers__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders__ = __webpack_require__(4);
-
-
-
-
-var content = __WEBPACK_IMPORTED_MODULE_0_jquery__('#admin-content');
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-users').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_1__customers__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-orders').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_2__orders__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__["ajaxSetup"]({
-    headers: {
-        'X-CSRF-TOKEN': __WEBPACK_IMPORTED_MODULE_0_jquery__('meta[name="csrf-token"]').attr('content')
-    }
-});
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

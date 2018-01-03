@@ -6,29 +6,26 @@
         </script>
     @endif
 </head>
-<link rel="stylesheet" href="{{asset('/css/trainings.css')}}">
-@section('title', 'Trainings')
+<link rel="stylesheet" href="{{asset('/css/races.css')}}">
+@section('title', 'Races')
 
 @section('main-content')
+    @php(dump($items))
     <div class="product-list">
-        <table class="tbl-trainings">
+        <table class="tbl-races">
             <tr>
-                <th style="display: none">id</th>
-                <th>Trainer</th>
-                <th>Date</th>
+                <th>Name</th>
                 <th>Location</th>
-                <th>Duration</th>
-                <th>Limit</th>
-                <th></th>
+                <th>Distance</th>
+                <th>Date</th>
             </tr>
             @foreach($items as $item)
                 <tr>
                     <td style="display: none">{{$item['id']}}</td>
-                    <td>{{$item['trainer_details']['name']}} {{$item['trainer_details']['surname']}}</td>
-                    <td>{{date('Y-m-d H:i', strtotime($item['date']))}}</td>
-                    <td>{{$item['location']}}</td>
-                    <td>{{$item['duration_minutes']}}m</td>
-                    <td>{{$item['signed_in']}}/{{$item['capacity_limit']}}</td>
+                    <td style="text-align: left">{{$item['name']}}</td>
+                    <td style="text-align: left">{{$item['location']}}</td>
+                    <td style="text-align: center">{{$item['distance']}}</td>
+                    <td style="text-align: center">{{date('Y-m-d', strtotime($item['date']))}}</td>
                 </tr>
             @endforeach
         </table>

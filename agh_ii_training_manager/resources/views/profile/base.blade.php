@@ -125,6 +125,73 @@
         @endif
     </div>
 
+    <div id="profile-races">
+        <h2>Future races</h2>
+        @if(!empty($races))
+            <ul>
+                <ol class="race-item-label">
+                    <span class="race-name"><b>Name</b></span>
+                    <span class="race-location"><b>Location</b></span>
+                    <span class="race-distance"><b>Distance</b></span>
+                    <span class="race-date"><b>Date</b></span>
+                </ol>
+                @foreach($races as $race)
+                    <li class="race-item">
+                        <span class="race-id" style="display: none">{{$race->id}}</span>
+                        <span class="race-name">{{$race->name}}</span>
+                        <span class="race-location">{{$race->location}}</span>
+                        <span class="race-distance">{{$race->distance}}</span>
+                        <span class="race-date">{{$race->date}}</span>
+                        <span class="btn-expend"></span>
+                        <ul class="race-details">
+                            <li class="collapsable"><span class="race_heat_start">Heat start: <b>{{substr($race->heat_start,0,5)}}</b></span> </li>
+                            <li class="collapsable"><span class="race_heat_type">Category: <b>{{ucfirst($race->type)}}</b></span> </li>
+                            <li class="collapsable"><span class="race_status">Status: <b> @if($race->status=='unpaid') Unpaid {{$race->price}} PLN @else Paid @endif</b></span> </li>
+                            <li class="collapsable"><span class="race_limits">Heat fullness: <b>{{$race->signed_in}}/{{$race->capacity}}</b></span> </li>
+                            <li class="collapsable"><span class="race_description"><br> {{$race->description}}</span> </li>
+                            <li class="collapsable"><button class="race_signout" value="{{$race->race_registration_id}}">Sign out</button></li>
+                        </ul>
+                    </li>
+                @endforeach
+            </ul>
+        @else
+            <span style="width: 100%">No race registrations</span>
+        @endif
+
+        <h2>Finished races</h2>
+        @if(!empty($races_past))
+            <ul>
+                <ol class="race-item-label">
+                    <span class="race-name"><b>Name</b></span>
+                    <span class="race-location"><b>Location</b></span>
+                    <span class="race-distance"><b>Distance</b></span>
+                    <span class="race-date"><b>Date</b></span>
+                </ol>
+                @foreach($races_past as $race)
+                    <li class="race-item">
+                        <span class="race-id" style="display: none">{{$race->id}}</span>
+                        <span class="race-name">{{$race->name}}</span>
+                        <span class="race-location">{{$race->location}}</span>
+                        <span class="race-distance">{{$race->distance}}</span>
+                        <span class="race-date">{{$race->date}}</span>
+                        <span class="btn-expend"></span>
+                        <ul class="race-details">
+                            <li class="collapsable"><span class="race_heat_start">Heat start: <b>{{substr($race->heat_start,0,5)}}</b></span> </li>
+                            <li class="collapsable"><span class="race_heat_type">Category: <b>{{ucfirst($race->type)}}</b></span> </li>
+                            <li class="collapsable"><span class="race_limits">Heat fullness: <b>{{$race->signed_in}}/{{$race->capacity}}</b></span> </li>
+                            <li class="collapsable"><span class="race_time">Finish time: <b>{{$race->time}} {{$race->status}}</b></span></li>
+                            <li class="collapsable"><span class="position_heat">Position in heat: <b>{{$race->position_heat}} / {{$race->signed_in}}</b></span></li>
+                            <li class="collapsable"><span class="position_total">Position total: <b>{{$race->position_total}} / {{$race->signed_total}}</b></span></li>
+                            <li class="collapsable"><span class="race_description"><br> {{$race->description}}</span> </li>
+                        </ul>
+                    </li>
+                @endforeach
+            </ul>
+        @else
+            <span style="width: 100%">No finished races</span>
+        @endif
+    </div>
+
     <script src="{{asset('/js/expandable_list.js')}}"></script>
     <script src="{{asset('/js/user/profile.js')}}"></script>
 @endsection

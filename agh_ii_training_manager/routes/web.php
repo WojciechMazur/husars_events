@@ -25,7 +25,8 @@ Route::resources([
     'users' => 'UsersController',
     'orders' => 'OrderController',
     'orderItems' => 'OrderItemsController',
-    'trainings' => 'TrainingsController'
+    'trainings' => 'TrainingsController',
+    'races' => 'RaceController'
 ]);
 
 Route::get('products/add-to-cart/{id}', [
@@ -45,6 +46,9 @@ Route::post('shop/shopping-cart/submit', 'OrderController@submitOrderView')->nam
 Route::get('orders/codes/{code}', 'OrderController@statusCodeDescription')->name('status-code');
 Route::get('orders/status/codes', 'OrderController@statusCodes')->name('status-codes');
 Route::get('orders/{id}/items', 'OrderController@orderItems');
+
+Route::post('/races/register','RaceController@raceRegistration' );
+Route::delete('/races/register/{id}', 'RaceController@raceRegistrationCancel');
 
 Route::post('trainings/reservation','TrainingsController@addTrainingReservation');
 Route::delete('trainings/reservation/{id}','TrainingsController@deleteTrainingReservation');

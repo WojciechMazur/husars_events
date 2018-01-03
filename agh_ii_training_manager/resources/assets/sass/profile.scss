@@ -5,11 +5,11 @@ h2{
   font-size: 110%;
 }
 
-#customer-info, #profile-orders, #profile-trainings{
+#customer-info, #profile-orders, #profile-trainings, #profile-races{
   margin-bottom: 0.5rem;
   position: relative;
   padding: 0.25rem 2rem 1rem;
-  background-color: #F2F2F2;
+  background-color: #F8F8F8;
   border-radius: 0.4rem;
   border: 0.2rem #aaaaaa;
 
@@ -98,4 +98,43 @@ h2{
   .btn-expend{width: 3rem; text-align: center}
   .trainer{}
   .trainer-spec{}
+}
+
+#profile-races{
+  span{
+    display: inline-block;
+    border: 1px #aaaaaa;
+    text-align: left;
+  }
+
+  .race-item{
+    padding-left: 0.5rem;
+    list-style-type: none;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background-color: #efefef;
+    padding-top: 2px;
+    margin-bottom: 2px;
+  }
+  .race-details>li{
+    list-style-type: none;
+  }
+
+
+  .race-name{width: 40%; text-align: left}
+  .race-location{width: 25%; text-align: left}
+  .race-date{width: 15%; text-align: center}
+  .race-distance{width: 10%; text-align: right}
+  .race_signout{
+    width: 6rem;
+    border-radius: 3px;
+    padding-left: 1rem;
+    text-align: center;
+    margin: 0.5rem 0.5rem 0.5rem 45%;
+  }
+  .btn-expend{width: 5%; text-align: center}
+  .race-item-label {
+    -webkit-padding-start: 0;
+    span{text-align: center;}
+  }
 }

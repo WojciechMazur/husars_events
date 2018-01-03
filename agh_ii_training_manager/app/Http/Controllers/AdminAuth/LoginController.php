@@ -12,7 +12,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    protected $redirectTo = '/';
+    protected $redirectTo = '/admin/';
 
     public function __construct()
     {
@@ -20,7 +20,7 @@ class LoginController extends Controller
     }
 
     public function showLoginForm()
-    { #Todo
+    {
         return view('auth/admin/login');
     }
 

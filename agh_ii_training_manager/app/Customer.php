@@ -38,11 +38,74 @@ class Customer extends Authenticable
         return $this->hasMany('App\TrainingReservation');
     }
 
+    public function futureRaces(){
+        return DB::table('races')
+            ->join('race_heats', 'race_heats.race_id', '=', 'races.id')
+            ->join('race_registrations', 'race_registrations.race_heat_id','=','race_heats.id')
+            ->where([
+                ['race_registrations.customer_id', '=', $this['id']],
+                ['races.date', '>=', date('Y-m-d')]
+            ])
+            ->select('races.*',
+                'race_registrations.id as race_registration_id',
+                'race_registrations.status as status',
+                'race_heats.heat_start',
+                'race_heats.type',
+                'race_heats.price',
+                'race_heats.capacity',
+                'race_heats.signed_in')
+            ->whereDate('races.date', '>=', date('Y-m-d'))
+            ->orderBy('races.date')
+            ->get();
+    }
+
+    public function pastRaces()
+    {
+        $races = DB::table('races')
+            ->join('race_heats', 'race_heats.race_id', '=', 'races.id')
+            ->join('race_results', 'race_results.race_heat_id', '=', 'race_heats.id')
+            ->where([
+                ['race_results.customer_id', '=', $this['id']],
+                ['races.date', '<', date('Y-m-d')]
+            ])
+            ->select(
+                'races.*',
+                'race_results.time',
+                'race_results.status',
+                'race_heats.id as race_heat_id',
+                'race_heats.heat_start',
+                'race_heats.type',
+                'race_heats.price',
+                'race_heats.capacity',
+                'race_heats.signed_in')
+            ->orderBy('races.date')
+            ->get();
+        foreach ($races as $race) {
+            $results = Race::find($race->id)->competitors();
+            foreach ($results as $result)
+                if ($result->id == $this['id']) {
+                    $race->position_total = $result->position;
+                    break;
+                }
+            $race->signed_total=$results->count();
+            $results = RaceHeat::find($race->race_heat_id)->competitors();
+            foreach ($results as $result)
+                if ($result->id == $this['id']) {
+                    $race->position_heat = $result->position;
+                    break;
+                }
+        }
+        return $races;
+    }
+
+
     public function trainings(){
         return DB::table('trainings')
             ->join('training_reservations', 'training_reservations.training_id','=','trainings.id')
-            ->where('training_reservations.customer_id','=', $this['id'])
-            ->whereDate('trainings.date','>=', date('Y-m-d H:i:s'))
+            ->where([
+                ['training_reservations.customer_id', '=', $this['id']],
+                ['trainings.date', '>=', date('Y-m-d H:i:s')]
+            ])
             ->select('trainings.*', 'training_reservations.id as reservation_id')
             ->orderBy('trainings.date')
             ->get();
@@ -51,8 +114,10 @@ class Customer extends Authenticable
     public function trainingsPast(){
         return DB::table('trainings')
             ->join('training_reservations', 'training_reservations.training_id','=','trainings.id')
-            ->where('training_reservations.customer_id','=', $this['id'])
-            ->whereDate('trainings.date','<', date('Y-m-d H:i:s'))
+            ->where([
+                ['training_reservations.customer_id', '=', $this['id']],
+                ['trainings.date', '<', date('Y-m-d H:i:s')]
+            ])
             ->select('trainings.*')
             ->orderBy('trainings.date')
             ->get();
