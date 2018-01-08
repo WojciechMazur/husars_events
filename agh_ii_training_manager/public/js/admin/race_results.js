@@ -60,11 +60,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 30);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -111,7 +112,8 @@ function showMessage(message) {
 }
 
 /***/ }),
-/* 1 */
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10371,7 +10373,71 @@ return jQuery;
 
 
 /***/ }),
-/* 2 */
+
+/***/ 12:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+
+
+var RaceResults = function () {
+    function RaceResults() {
+        _classCallCheck(this, RaceResults);
+    }
+
+    _createClass(RaceResults, null, [{
+        key: "show",
+        value: function show(content) {
+            content.html("Not implemented");
+        }
+    }, {
+        key: "edit",
+        value: function edit(id) {}
+    }, {
+        key: "delete",
+        value: function _delete(id) {
+            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
+                url: window.location.origin + "/products/" + id,
+                method: 'DELETE',
+                success: function success(response) {
+                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-products");
+                    row.html("");
+                },
+                fail: function fail(status) {
+                    alert("Unknown error accoured");
+                    console.log(status);
+                }
+
+            });
+        }
+    }, {
+        key: "createEditForm",
+        value: function createEditForm(product) {}
+    }]);
+
+    return RaceResults;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (RaceResults);
+
+/***/ }),
+
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -27463,7 +27529,8 @@ return jQuery;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(3)(module)))
 
 /***/ }),
-/* 3 */
+
+/***/ 3:
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -27491,7 +27558,16 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 4 */
+
+/***/ 30:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(12);
+
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, exports) {
 
 var g;
@@ -27517,1023 +27593,6 @@ try {
 module.exports = g;
 
 
-/***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-var Customers = function () {
-    function Customers() {
-        _classCallCheck(this, Customers);
-    }
-
-    _createClass(Customers, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("");
-            __WEBPACK_IMPORTED_MODULE_0_jquery__["getJSON"](window.location.origin + '//users', function (data) {
-                var now = new Date();
-                var tr = void 0;
-
-                var table = __WEBPACK_IMPORTED_MODULE_0_jquery__("<table class='admin-table' id='tbl-customers'/>");
-                table.append("<tr>\n    <th>Id</th>\n    <th>First Name</th>\n    <th>Surname</th>\n    <th>Email</th>\n    <th>Created</th>\n    <th>Updated</th>\n    <th> </th>\n    <th> </th>\n</tr>");
-                for (var i = 0; i < data.length; i++) {
-                    var btn_edit = __WEBPACK_IMPORTED_MODULE_0_jquery__("<button class='btn-edit'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>");
-                    btn_edit.on('click', function () {
-                        Customers.edit(__WEBPACK_IMPORTED_MODULE_0_jquery__(this).parent().parent().find('td:first').text());
-                    });
-                    var btn_delete = __WEBPACK_IMPORTED_MODULE_0_jquery__("<button class='btn-delete'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></button>");
-                    btn_delete.on('click', function () {
-                        Customers.delete(__WEBPACK_IMPORTED_MODULE_0_jquery__(this).parent().parent().find('td:first').text());
-                    });
-
-                    tr = __WEBPACK_IMPORTED_MODULE_0_jquery__('<tr/>');
-                    tr.append("<td>" + data[i].id + "</td>");
-                    tr.append("<td>" + data[i].first_name + "</td>");
-                    tr.append("<td>" + data[i].surname + "</td>");
-                    tr.append("<td>" + data[i].email + "</td>");
-                    tr.append("<td>" + Math.floor((now.getTime() - __WEBPACK_IMPORTED_MODULE_1__utils__["stringToDate"](data[i].created_at, 'YYYY-MM-DD HH:MM:SS')) / 86400000) + " days ago </td>");
-                    tr.append("<td>" + Math.floor((now.getTime() - __WEBPACK_IMPORTED_MODULE_1__utils__["stringToDate"](data[i].updated_at, 'YYYY-MM-DD HH:MM:SS')) / 86400000) + " days ago </td>");
-                    tr.append(__WEBPACK_IMPORTED_MODULE_0_jquery__("<td></td>").append(btn_edit));
-                    tr.append(__WEBPACK_IMPORTED_MODULE_0_jquery__("<td></td>").append(btn_delete));
-
-                    table.append(tr);
-                }
-                content.append(table);
-            });
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {
-            __WEBPACK_IMPORTED_MODULE_0_jquery__["getJSON"](window.location.origin + "/users/" + id, function (data) {
-                Customers.createEditForm(data);
-            });
-        }
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_0_jquery__["ajax"]({
-                url: window.location.origin + "/users/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_2__utils__["findTextInTable"])(id, "#tbl-customers");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(user) {
-            var zip_code = user['zip-code'];
-            var modal = __WEBPACK_IMPORTED_MODULE_0_jquery__('#modal');
-            var modalContent = __WEBPACK_IMPORTED_MODULE_0_jquery__('#modal-content');
-            var form = __WEBPACK_IMPORTED_MODULE_0_jquery__("\n                <form method=\"POST\" action=\"/users/" + user.id + "\" class=\"modal-content\">\n                <input type=\"hidden\" name=\"_method\" value=\"PUT\">\n                <label for=\"first_name\">First name</label>  <input type=\"text\" name=\"first_name\" value=\"" + user.first_name + "\">\n                <label for=\"second_name\">Second name</label><input type=\"text\" name=\"second_name\" value=\"" + user.second_name + "\"><br>\n                <label for=\"surname\">Surname</label>        <input type=\"text\" name=\"surname\" value=\"" + user.surname + "\"><br>\n                <label for=\"email\">Email</label>            <input type=\"email\" name=\"email\" value=\"" + user.email + "\"><br>\n                <label for=\"phone\">Phone</label>            <input type=\"tel\"  name=\"phone\" value=\"" + user.phone + "\"><br>\n                <label for=\"country\">Country</label>        <input type=\"text\" name=\"country\" value=\"" + user.country + "\">\n                <label for=\"state\">State</label>            <input type=\"text\" name=\"state\" value=\"" + user.state + "\"><br>\n                <label for=\"city\">City</label>              <input type=\"text\" name=\"city\" value=\"" + user.city + "\">\n                <label for=\"address\">Address</label>        <input type=\"text\" name=\"address\" value=\"" + user.address + "\"><br>\n                <label for=\"zip-code\">Zip-code</label>      <input type=\"text\" name=\"zip_code\" value=\"" + zip_code + "\"><br>\n                <label for=\"password\">Password</label>      <input type=\"text\" name=\"password\"><br>\n                <input type=\"hidden\" name=\"_token\" value=\"" + __WEBPACK_IMPORTED_MODULE_0_jquery__('meta[name=csrf-token]').attr('content') + "\">\n                <input type=\"submit\" id=\"btn-submit\" class=\"fa fa-floppy-o\" value=&#xf0c7>\n                <input type=\"button\" id=\"btn-cancel\" class=\"fa fa-times\" value=&#xf00d>\n                </form>");
-            form.find('#btn-cancel').on('click', function () {
-                modal.toggle('fast');
-            });
-
-            modalContent.html("").append(form);
-            modal.toggle('fast');
-        }
-    }]);
-
-    return Customers;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (Customers);
-
-/***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-var Orders = function () {
-    function Orders() {
-        _classCallCheck(this, Orders);
-    }
-
-    _createClass(Orders, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("");
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + '/orders', function (data) {
-                var tr = void 0;
-                var table = __WEBPACK_IMPORTED_MODULE_1_jquery__("<table class='admin-table' id='tbl-orders'/>");
-                table.append("<tr>\n    <th>Id</th>\n    <th>Ordered by</th>\n    <th>Status</th>\n    <th>Price</th>\n    <th>Created</th>\n    <th>Updated</th>\n    <th> </th>\n    <th> </th>\n</tr>");
-
-                var _loop = function _loop(i) {
-                    var ordered_by = __WEBPACK_IMPORTED_MODULE_1_jquery__("<td>Unknown</td>");
-                    __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/users/" + data[i].customer_id, function (user) {
-                        ordered_by.html(user.first_name + " " + user.surname);
-                    });
-                    var status = __WEBPACK_IMPORTED_MODULE_1_jquery__("<td>Unknown</td>");
-                    __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/codes/" + data[i].status_code, function (code) {
-                        status.html("" + code.description);
-                    });
-                    var btn_edit = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-edit'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>");
-                    btn_edit.on('click', function () {
-                        Orders.edit(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
-                    });
-                    var btn_delete = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-delete'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></button>");
-                    btn_delete.on('click', function () {
-                        Orders.delete(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
-                    });
-
-                    tr = __WEBPACK_IMPORTED_MODULE_1_jquery__('<tr/>');
-                    tr.append("<td>" + data[i].id + "</td>");
-
-                    tr.append(ordered_by);
-                    tr.append(status);
-                    tr.append("<td id='order_price'>" + data[i].total_price + "PLN </td>");
-                    tr.append("<td>" + data[i].created_at + "</td>");
-                    tr.append("<td>" + data[i].updated_at + "</td>");
-                    tr.append(__WEBPACK_IMPORTED_MODULE_1_jquery__("<td></td>").append(btn_edit));
-                    tr.append(__WEBPACK_IMPORTED_MODULE_1_jquery__("<td></td>").append(btn_delete));
-
-                    table.append(tr);
-                };
-
-                for (var i = 0; i < data.length; i++) {
-                    _loop(i);
-                }
-                content.append(table);
-            });
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/" + id, function (data) {
-                Orders.createEditForm(data);
-            });
-        }
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: window.location.origin + "/orders/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-orders");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(order) {
-            var modal = __WEBPACK_IMPORTED_MODULE_1_jquery__('#modal');
-            var modalContent = __WEBPACK_IMPORTED_MODULE_1_jquery__('#modal-content');
-            modalContent.html("");
-            modalContent.append("\n            <input type=\"button\" id=\"btn-cancel\" class=\"fa fa-times\" value=&#xf00d>");
-            modal.find('#btn-cancel').on('click', function () {
-                modal.toggle('fast');
-            });
-
-            var options = '';
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/" + order.id + "/items", function (items) {
-                var orderItems = __WEBPACK_IMPORTED_MODULE_1_jquery__("<table class=\"admin-table modal-content\" id=\"tbl-orderitems\"/>");
-                orderItems.append("<tr> <th>Id</th>  <th>Name</th> <th>Price</th> <th>Quantity</th> <th>Value</th> <th> </th> </tr>");
-
-                var _loop2 = function _loop2(i) {
-                    var quantity = __WEBPACK_IMPORTED_MODULE_1_jquery__("<td><input type=\"number\" min=\"0\" step=\"1\" value=\"" + items[i].order_items_quantity + "\"></td>");
-                    quantity.find('input').on('change', function () {
-                        var _this = this;
-
-                        var newQuantity = __WEBPACK_IMPORTED_MODULE_1_jquery__(this).val();
-                        __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                            url: window.location.origin + "/orderItems/" + items[i]['id'],
-                            method: 'PUT',
-                            data: {
-                                'order_items_quantity': newQuantity
-                            },
-                            success: function success(response) {
-                                if (response === '1') {
-                                    __WEBPACK_IMPORTED_MODULE_1_jquery__(_this).parent().parent().html("");
-                                } else {
-                                    __WEBPACK_IMPORTED_MODULE_1_jquery__(_this).parent().next().text(Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(response['item']['order_items_quantity'] * response['item_price'] * 100) / 100 + " PLN");
-                                    var rows = __WEBPACK_IMPORTED_MODULE_1_jquery__("#tbl-orders tr");
-                                    for (var _i = 0; _i < rows.length; _i++) {
-                                        if (rows[_i].childNodes[0].innerHTML == response['order']['id']) rows[_i].childNodes[3].innerHTML = Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(response['order']['total_price'] * 100) / 100 + " PLN";
-                                    }
-                                }
-                            }
-                        });
-                    });
-                    var tr = __WEBPACK_IMPORTED_MODULE_1_jquery__("\n                <tr>    \n                    <td>" + items[i].id + "</td>\n                    <td>" + items[i].product.name + "</td>\n                    <td>" + items[i].product.price + " PLN</td>\n                </tr>");
-                    tr.append(quantity);
-                    tr.append("\n                    <td>" + Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(items[i].order_items_quantity * items[i].product.price * 100) / 100 + " PLN</td>\n                    <td></td>\n                    <td></td>");
-                    orderItems.append(tr);
-                };
-
-                for (var i = 0; i < items.length; i++) {
-                    _loop2(i);
-                }
-                modalContent.append(orderItems);
-            });
-
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/status/codes/", function (statusCodes) {
-                for (var i = 0; i < statusCodes.length; i++) {
-                    var selected = statusCodes[i].id === order.status_code ? "selected" : "";
-                    options += "<option value=\"" + statusCodes[i].id + "\" " + selected + ">" + statusCodes[i].description + "</option>";
-                }
-            }).done(function () {
-                var form = __WEBPACK_IMPORTED_MODULE_1_jquery__("\n                <form method=\"POST\" action=\"/orders/" + order.id + "\" class=\"modal-content\">\n                    <input type=\"hidden\" name=\"_method\" value=\"PUT\">\n                    <label for=\"order_details\">Order details</label><textarea name=\"order_details\"></textarea>\n                    <label for=\"status\">Status</label> <select name=status>" + options + "</select>\n                    <hr>\n                    <label for=\"first_name\">First name</label>  <input type=\"text\" name=\"first_name\" value=\"" + order.first_name + "\">\n                    <label for=\"second_name\">Second name</label><input type=\"text\" name=\"second_name\" value=\"" + order.second_name + "\"><br>\n                    <label for=\"surname\">Surname</label>        <input type=\"text\" name=\"surname\" value=\"" + order.surname + "\"><br>\n                    <label for=\"email\">Email</label>            <input type=\"email\" name=\"email\" value=\"" + order.email + "\"><br>\n                    <label for=\"phone\">Phone</label>            <input type=\"tel\"  name=\"phone\" value=\"" + order.phone + "\"><br>\n                    <label for=\"country\">Country</label>        <input type=\"text\" name=\"country\" value=\"" + order.country + "\">\n                    <label for=\"state\">State</label>            <input type=\"text\" name=\"state\" value=\"" + order.state + "\"><br>\n                    <label for=\"city\">City</label>              <input type=\"text\" name=\"city\" value=\"" + order.city + "\">\n                    <label for=\"address\">Address</label>        <input type=\"text\" name=\"address\" value=\"" + order.address + "\"><br>\n                    <label for=\"zip-code\">Zip-code</label>      <input type=\"text\" name=\"zip_code\" value=\"" + order['zip_code'] + "\"><br>\n                                                                <input type=\"submit\" id=\"btn-submit\" class=\"fa fa-floppy-o\" value=&#xf0c7>\n\n                    <input type=\"hidden\" name=\"_token\" value=\"" + __WEBPACK_IMPORTED_MODULE_1_jquery__('meta[name=csrf-token]').attr('content') + "\">\n                </form>");
-                modalContent.append(form);
-                modal.toggle('fast');
-            });
-        }
-    }]);
-
-    return Orders;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (Orders);
-
-/***/ }),
-/* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-var Training = function () {
-    function Training() {
-        _classCallCheck(this, Training);
-    }
-
-    _createClass(Training, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("");
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + '/trainings', { api: true }, function (data) {
-                var tr = void 0;
-                var table = __WEBPACK_IMPORTED_MODULE_1_jquery__("<table class='admin-table' id='tbl-trainings'/>");
-                table.append("<tr>\n    <th>Id</th>\n    <th>Date</th>\n    <th>Location</th>\n    <th>Trainer</th>\n    <th>Duration</th>\n    <th>Limit</th>\n    <th> </th>\n    <th> </th>\n</tr>");
-                for (var i = 0; i < data.length; i++) {
-                    var btn_edit = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-edit'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>");
-                    btn_edit.on('click', function () {
-                        Training.edit(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
-                    });
-                    var btn_delete = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-delete'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></button>");
-                    btn_delete.on('click', function () {
-                        Training.delete(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
-                    });
-                    tr = __WEBPACK_IMPORTED_MODULE_1_jquery__('<tr/>');
-                    tr.append("<td>" + data[i].id + "</td>");
-                    tr.append("<td>" + data[i].date.substring(0, 16) + "</td>");
-                    tr.append("<td>" + data[i].location + "</td>");
-                    tr.append("<td>" + data[i].trainer_details.name + " " + data[i].trainer_details.surname + "</td>");
-                    tr.append("<td>" + data[i].duration_minutes + " minutes</td>");
-                    tr.append("<td>" + data[i].signed_in + " / " + data[i].capacity_limit + "</td>");
-                    tr.append(btn_edit);
-                    tr.append(btn_delete);
-                    table.append(tr);
-                }
-                content.append(table);
-            });
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {
-            console.log('Click');
-        }
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: window.location.origin + "/trainings/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-trainings");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(order) {
-            var modal = __WEBPACK_IMPORTED_MODULE_1_jquery__('#modal');
-            var modalContent = __WEBPACK_IMPORTED_MODULE_1_jquery__('#modal-content');
-            modalContent.html("");
-            modalContent.append("\n            <input type=\"button\" id=\"btn-cancel\" class=\"fa fa-times\" value=&#xf00d>");
-            modal.find('#btn-cancel').on('click', function () {
-                modal.toggle('fast');
-            });
-
-            var options = '';
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/" + order.id + "/items", function (items) {
-                var orderItems = __WEBPACK_IMPORTED_MODULE_1_jquery__("<table class=\"admin-table modal-content\" id=\"tbl-orderitems\"/>");
-                orderItems.append("<tr> <th>Id</th>  <th>Name</th> <th>Price</th> <th>Quantity</th> <th>Value</th> <th> </th> </tr>");
-
-                var _loop = function _loop(i) {
-                    var quantity = __WEBPACK_IMPORTED_MODULE_1_jquery__("<td><input type=\"number\" min=\"0\" step=\"1\" value=\"" + items[i].order_items_quantity + "\"></td>");
-                    quantity.find('input').on('change', function () {
-                        var _this = this;
-
-                        var newQuantity = __WEBPACK_IMPORTED_MODULE_1_jquery__(this).val();
-                        __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                            url: window.location.origin + "/orderItems/" + items[i]['id'],
-                            method: 'PUT',
-                            data: {
-                                'order_items_quantity': newQuantity
-                            },
-                            success: function success(response) {
-                                if (response === '1') {
-                                    __WEBPACK_IMPORTED_MODULE_1_jquery__(_this).parent().parent().html("");
-                                } else {
-                                    __WEBPACK_IMPORTED_MODULE_1_jquery__(_this).parent().next().text(Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(response['item']['order_items_quantity'] * response['item_price'] * 100) / 100 + " PLN");
-                                    var rows = __WEBPACK_IMPORTED_MODULE_1_jquery__("#tbl-orders tr");
-                                    for (var _i = 0; _i < rows.length; _i++) {
-                                        if (rows[_i].childNodes[0].innerHTML == response['order']['id']) rows[_i].childNodes[3].innerHTML = Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(response['order']['total_price'] * 100) / 100 + " PLN";
-                                    }
-                                }
-                            }
-                        });
-                    });
-                    var tr = __WEBPACK_IMPORTED_MODULE_1_jquery__("\n                <tr>    \n                    <td>" + items[i].id + "</td>\n                    <td>" + items[i].product.name + "</td>\n                    <td>" + items[i].product.price + " PLN</td>\n                </tr>");
-                    tr.append(quantity);
-                    tr.append("\n                    <td>" + Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(items[i].order_items_quantity * items[i].product.price * 100) / 100 + " PLN</td>\n                    <td></td>\n                    <td></td>");
-                    orderItems.append(tr);
-                };
-
-                for (var i = 0; i < items.length; i++) {
-                    _loop(i);
-                }
-                modalContent.append(orderItems);
-            });
-
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/status/codes/", function (statusCodes) {
-                for (var i = 0; i < statusCodes.length; i++) {
-                    var selected = statusCodes[i].id === order.status_code ? "selected" : "";
-                    options += "<option value=\"" + statusCodes[i].id + "\" " + selected + ">" + statusCodes[i].description + "</option>";
-                }
-            }).done(function () {
-                var form = __WEBPACK_IMPORTED_MODULE_1_jquery__("\n                <form method=\"POST\" action=\"/orders/" + order.id + "\" class=\"modal-content\">\n                    <input type=\"hidden\" name=\"_method\" value=\"PUT\">\n                    <label for=\"order_details\">Order details</label><textarea name=\"order_details\"></textarea>\n                    <label for=\"status\">Status</label> <select name=status>" + options + "</select>\n                    <hr>\n                    <label for=\"first_name\">First name</label>  <input type=\"text\" name=\"first_name\" value=\"" + order.first_name + "\">\n                    <label for=\"second_name\">Second name</label><input type=\"text\" name=\"second_name\" value=\"" + order.second_name + "\"><br>\n                    <label for=\"surname\">Surname</label>        <input type=\"text\" name=\"surname\" value=\"" + order.surname + "\"><br>\n                    <label for=\"email\">Email</label>            <input type=\"email\" name=\"email\" value=\"" + order.email + "\"><br>\n                    <label for=\"phone\">Phone</label>            <input type=\"tel\"  name=\"phone\" value=\"" + order.phone + "\"><br>\n                    <label for=\"country\">Country</label>        <input type=\"text\" name=\"country\" value=\"" + order.country + "\">\n                    <label for=\"state\">State</label>            <input type=\"text\" name=\"state\" value=\"" + order.state + "\"><br>\n                    <label for=\"city\">City</label>              <input type=\"text\" name=\"city\" value=\"" + order.city + "\">\n                    <label for=\"address\">Address</label>        <input type=\"text\" name=\"address\" value=\"" + order.address + "\"><br>\n                    <label for=\"zip-code\">Zip-code</label>      <input type=\"text\" name=\"zip_code\" value=\"" + order['zip_code'] + "\"><br>\n                                                                <input type=\"submit\" id=\"btn-submit\" class=\"fa fa-floppy-o\" value=&#xf0c7>\n\n                    <input type=\"hidden\" name=\"_token\" value=\"" + __WEBPACK_IMPORTED_MODULE_1_jquery__('meta[name=csrf-token]').attr('content') + "\">\n                </form>");
-                modalContent.append(form);
-                modal.toggle('fast');
-            });
-        }
-    }]);
-
-    return Training;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (Training);
-
-/***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-var TrainingReservations = function () {
-    function TrainingReservations() {
-        _classCallCheck(this, TrainingReservations);
-    }
-
-    _createClass(TrainingReservations, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("");
-            createTrainingInput(content);
-            createCustomerInput(content);
-            var innerContent = __WEBPACK_IMPORTED_MODULE_1_jquery__('<div id="inner-content"></div>');
-            var btnFind = __WEBPACK_IMPORTED_MODULE_1_jquery__('<button id="btn-find">Find</button>');
-            btnFind.bind('click', function () {
-                innerContent.html('');
-                __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + '/trainings/reservations/index', {
-                    customer_id: __WEBPACK_IMPORTED_MODULE_1_jquery__('#input-customer-id').val(),
-                    training_id: __WEBPACK_IMPORTED_MODULE_1_jquery__('#input-training-id').val()
-                }, function (data) {
-                    console.log(data);
-                    var tr = void 0;
-                    var table = __WEBPACK_IMPORTED_MODULE_1_jquery__("<table class='admin-table' id='tbl-training-reservations'/>");
-                    table.append("<tr>\n    <th>Id</th>\n    <th>Date</th>\n    <th>Location</th>\n    <th>Limit</th>\n    <th>First name</th>\n    <th>Surname</th>\n    <th>Email</th>\n    <th> </th>\n    <th> </th>\n</tr>");
-                    for (var i = 0; i < data.length; i++) {
-                        var btn_edit = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-edit'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>");
-                        btn_edit.on('click', function () {
-                            TrainingReservations.edit(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
-                        });
-                        var btn_delete = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-delete'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></button>");
-                        btn_delete.on('click', function () {
-                            TrainingReservations.delete(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
-                        });
-                        tr = __WEBPACK_IMPORTED_MODULE_1_jquery__('<tr/>');
-                        tr.append("<td>" + data[i].id + "</td>");
-                        tr.append("<td>" + data[i].date.substring(0, 16) + "</td>");
-                        tr.append("<td>" + data[i].location + "</td>");
-                        tr.append("<td>" + data[i].signed_in + " / " + data[i].capacity_limit + "</td>");
-                        tr.append("<td>" + data[i].first_name);
-                        tr.append("<td>" + data[i].surname + "</td>");
-                        tr.append("<td>" + data[i].email + "</td>");
-                        tr.append(btn_edit);
-                        tr.append(btn_delete);
-                        table.append(tr);
-                    }
-                    innerContent.append(table);
-                });
-            });
-            content.append(btnFind);
-            content.append(innerContent);
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {}
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: window.location.origin + "/trainings/reservation/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-training-reservations");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(product) {}
-    }]);
-
-    return TrainingReservations;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (TrainingReservations);
-
-
-function createTrainingInput(content) {
-    __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + '/trainings', { api: true }, function (data) {
-        var options = '<option value="*">Select training</option>';
-        for (var i = 0; i < data.length; i++) {
-            var trainer = data[i].trainer_details.name + " " + data[i].trainer_details.surname;
-            var location = "" + data[i].location;
-            var date = "" + data[i].date.substring(0, 16);
-            options += "<option value=\"" + data[i].id + "\">" + date + " " + location + " " + trainer + "</option>";
-        }
-        var inputTrainingId = __WEBPACK_IMPORTED_MODULE_1_jquery__("<select id=\"input-training-id\" style=\"width:100%\">" + options + "</select>");
-        content.prepend(inputTrainingId);
-    });
-}
-
-function createCustomerInput(content) {
-    __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + '/users', { api: true }, function (data) {
-        var options = '<option value="*">Select customer</option>';
-        for (var i = 0; i < data.length; i++) {
-            var user = data[i].first_name + " " + data[i].surname + " " + data[i].email;
-            options += "<option value=\"" + data[i].id + "\">" + user + "</option>";
-        }
-        var inputCustomerId = __WEBPACK_IMPORTED_MODULE_1_jquery__("<select id=\"input-customer-id\" style=\"width:100%\">" + options + "</select>");
-        content.prepend(inputCustomerId);
-    });
-}
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-var Products = function () {
-    function Products() {
-        _classCallCheck(this, Products);
-    }
-
-    _createClass(Products, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("Not implemented");
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {}
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: window.location.origin + "/products/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-products");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(product) {}
-    }]);
-
-    return Products;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (Products);
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-var Races = function () {
-    function Races() {
-        _classCallCheck(this, Races);
-    }
-
-    _createClass(Races, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("");
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/races", { api: true }, function (data) {
-                console.log(data);
-                var tr = void 0;
-                var table = __WEBPACK_IMPORTED_MODULE_1_jquery__("<table class='admin-table' id='tbl-races'/>");
-                table.append("<tr>\n                 <th>Id</th>\n                 <th>Name</th>\n                 <th>Location</th>\n                 <th>Distance</th>\n                 <th>Date</th>\n                 <th> </th>\n                 <th> </th>\n             </tr>");
-                //Bug. Gets object insted or array of objects
-                for (var i = 0; i < data.length; i++) {
-                    console.log(i);
-                    var btn_edit = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-edit'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>");
-                    btn_edit.on('click', function () {
-                        Races.edit(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
-                    });
-                    var btn_delete = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-delete'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></button>");
-                    btn_delete.on('click', function () {
-                        Races.delete(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
-                    });
-                    tr = __WEBPACK_IMPORTED_MODULE_1_jquery__('<tr/>');
-                    tr.append("<td>" + data[i].id + "</td>");
-                    tr.append("<td>" + data[i].name + "</td>");
-                    tr.append("<td>" + data[i].location + "</td>");
-                    tr.append("<td>" + data[i].distance);
-                    tr.append("<td>" + data[i].date.substring(0, 16) + "</td>");
-                    tr.append(btn_edit);
-                    tr.append(btn_delete);
-                    table.append(tr);
-                }
-                content.append(table);
-            });
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {}
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: window.location.origin + "/races/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-races");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(product) {}
-    }]);
-
-    return Races;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (Races);
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-var RaceHeats = function () {
-    function RaceHeats() {
-        _classCallCheck(this, RaceHeats);
-    }
-
-    _createClass(RaceHeats, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("Not implemented");
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {}
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: window.location.origin + "/products/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-products");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(product) {}
-    }]);
-
-    return RaceHeats;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (RaceHeats);
-
-/***/ }),
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-var RaceResults = function () {
-    function RaceResults() {
-        _classCallCheck(this, RaceResults);
-    }
-
-    _createClass(RaceResults, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("Not implemented");
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {}
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: window.location.origin + "/products/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-products");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(product) {}
-    }]);
-
-    return RaceResults;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (RaceResults);
-
-/***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-var RaceRegistrations = function () {
-    function RaceRegistrations() {
-        _classCallCheck(this, RaceRegistrations);
-    }
-
-    _createClass(RaceRegistrations, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("Not implemented");
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {}
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: window.location.origin + "/products/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-products");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(product) {}
-    }]);
-
-    return RaceRegistrations;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (RaceRegistrations);
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(15);
-__webpack_require__(16);
-__webpack_require__(17);
-__webpack_require__(18);
-__webpack_require__(19);
-__webpack_require__(20);
-__webpack_require__(21);
-module.exports = __webpack_require__(22);
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__customers__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__orders__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__trainings__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__training_reservations__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__products__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__races__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__race_heats__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__race_results__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__race_registrations__ = __webpack_require__(13);
-
-
-
-
-
-
-
-
-
-
-
-var content = __WEBPACK_IMPORTED_MODULE_0_jquery__('#admin-content');
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-users').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_1__customers__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-products').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_5__products__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-orders').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_2__orders__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-trainings').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_3__trainings__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-training-reservations').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_4__training_reservations__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-races').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_6__races__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-race_heats').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_7__race_heats__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-race_results').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_8__race_results__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__('#btn-race_registrations').bind('click', function () {
-    __WEBPACK_IMPORTED_MODULE_9__race_registrations__["default"].show(content);
-});
-
-__WEBPACK_IMPORTED_MODULE_0_jquery__["ajaxSetup"]({
-    headers: {
-        'X-CSRF-TOKEN': __WEBPACK_IMPORTED_MODULE_0_jquery__('meta[name="csrf-token"]').attr('content')
-    }
-});
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
 /***/ })
-/******/ ]);
+
+/******/ });

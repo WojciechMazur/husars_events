@@ -48,11 +48,14 @@ class RaceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Race[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $items=Race::all()->sortBy('name');
+        if($request['api']){
+            return $items->toArray();
+        }
         return view('models.races.index')->with('items', $items);
     }
 

@@ -60,11 +60,60 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 25);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
+/******/ ({
+
+/***/ 0:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["stringToDate"] = stringToDate;
+/* harmony export (immutable) */ __webpack_exports__["findTextInTable"] = findTextInTable;
+/* harmony export (immutable) */ __webpack_exports__["showMessage"] = showMessage;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+
+function stringToDate(_date, _format) {
+    var delimiter = /[ :-]/;
+    var formatLowerCase = _format.toLowerCase();
+    var formatItems = formatLowerCase.split(delimiter);
+    var dateItems = _date.split(delimiter);
+    var monthIndex = formatItems.indexOf("mm");
+    var dayIndex = formatItems.indexOf("dd");
+    var yearIndex = formatItems.indexOf("yyyy");
+    var hourIndex = formatItems.indexOf("hh");
+    var minuteIndex = formatItems.indexOf("mm");
+    var secondIndex = formatItems.indexOf("ss");
+    var month = parseInt(dateItems[monthIndex]);
+    month -= 1;
+    var date = new Date(dateItems[yearIndex], month, dateItems[dayIndex], dateItems[hourIndex], dateItems[minuteIndex], dateItems[secondIndex]);
+    return date;
+}
+
+function findTextInTable(_search, _table) {
+
+    if (_table === undefined) _table = "table";
+    return __WEBPACK_IMPORTED_MODULE_0_jquery__(_table + " tr td").filter(function () {
+        return __WEBPACK_IMPORTED_MODULE_0_jquery__(this).text() === _search;
+    }).closest("tr");
+}
+
+function showMessage(message) {
+    var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'black';
+    var fade_in = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 500;
+    var delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1000;
+    var fade_out = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 500;
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery__('#message-text').css('color', color);
+    __WEBPACK_IMPORTED_MODULE_0_jquery__("#message-text").html(message).fadeIn(fade_in).delay(delay).fadeOut(fade_out);
+}
+
+/***/ }),
+
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10324,252 +10373,8 @@ return jQuery;
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["stringToDate"] = stringToDate;
-/* harmony export (immutable) */ __webpack_exports__["findTextInTable"] = findTextInTable;
-/* harmony export (immutable) */ __webpack_exports__["showMessage"] = showMessage;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-
-function stringToDate(_date, _format) {
-    var delimiter = /[ :-]/;
-    var formatLowerCase = _format.toLowerCase();
-    var formatItems = formatLowerCase.split(delimiter);
-    var dateItems = _date.split(delimiter);
-    var monthIndex = formatItems.indexOf("mm");
-    var dayIndex = formatItems.indexOf("dd");
-    var yearIndex = formatItems.indexOf("yyyy");
-    var hourIndex = formatItems.indexOf("hh");
-    var minuteIndex = formatItems.indexOf("mm");
-    var secondIndex = formatItems.indexOf("ss");
-    var month = parseInt(dateItems[monthIndex]);
-    month -= 1;
-    var date = new Date(dateItems[yearIndex], month, dateItems[dayIndex], dateItems[hourIndex], dateItems[minuteIndex], dateItems[secondIndex]);
-    return date;
-}
-
-function findTextInTable(_search, _table) {
-
-    if (_table === undefined) _table = "table";
-    return __WEBPACK_IMPORTED_MODULE_0_jquery__(_table + " tr td").filter(function () {
-        return __WEBPACK_IMPORTED_MODULE_0_jquery__(this).text() === _search;
-    }).closest("tr");
-}
-
-function showMessage(message) {
-    var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'black';
-    var fade_in = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 500;
-    var delay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1000;
-    var fade_out = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 500;
-
-    __WEBPACK_IMPORTED_MODULE_0_jquery__('#message-text').css('color', color);
-    __WEBPACK_IMPORTED_MODULE_0_jquery__("#message-text").html(message).fadeIn(fade_in).delay(delay).fadeOut(fade_out);
-}
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-/* 3 */,
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(1);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-
-
-
-
-var Orders = function () {
-    function Orders() {
-        _classCallCheck(this, Orders);
-    }
-
-    _createClass(Orders, null, [{
-        key: "show",
-        value: function show(content) {
-            content.html("");
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + '/orders', function (data) {
-                var tr = void 0;
-                var table = __WEBPACK_IMPORTED_MODULE_1_jquery__("<table class='admin-table' id='tbl-orders'/>");
-                table.append("<tr>\n    <th>Id</th>\n    <th>Ordered by</th>\n    <th>Status</th>\n    <th>Price</th>\n    <th>Created</th>\n    <th>Updated</th>\n    <th> </th>\n    <th> </th>\n</tr>");
-
-                var _loop = function _loop(i) {
-                    var ordered_by = __WEBPACK_IMPORTED_MODULE_1_jquery__("<td>Unknown</td>");
-                    __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/users/" + data[i].customer_id, function (user) {
-                        ordered_by.html(user.first_name + " " + user.surname);
-                    });
-                    var status = __WEBPACK_IMPORTED_MODULE_1_jquery__("<td>Unknown</td>");
-                    __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/codes/" + data[i].status_code, function (code) {
-                        status.html("" + code.description);
-                    });
-                    var btn_edit = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-edit'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>");
-                    btn_edit.on('click', function () {
-                        Orders.edit(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
-                    });
-                    var btn_delete = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-delete'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></button>");
-                    btn_delete.on('click', function () {
-                        Orders.delete(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
-                    });
-
-                    tr = __WEBPACK_IMPORTED_MODULE_1_jquery__('<tr/>');
-                    tr.append("<td>" + data[i].id + "</td>");
-
-                    tr.append(ordered_by);
-                    tr.append(status);
-                    tr.append("<td id='order_price'>" + data[i].total_price + "PLN </td>");
-                    tr.append("<td>" + data[i].created_at + "</td>");
-                    tr.append("<td>" + data[i].updated_at + "</td>");
-                    tr.append(__WEBPACK_IMPORTED_MODULE_1_jquery__("<td></td>").append(btn_edit));
-                    tr.append(__WEBPACK_IMPORTED_MODULE_1_jquery__("<td></td>").append(btn_delete));
-
-                    table.append(tr);
-                };
-
-                for (var i = 0; i < data.length; i++) {
-                    _loop(i);
-                }
-                content.append(table);
-            });
-        }
-    }, {
-        key: "edit",
-        value: function edit(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/" + id, function (data) {
-                Orders.createEditForm(data);
-            });
-        }
-    }, {
-        key: "delete",
-        value: function _delete(id) {
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                url: window.location.origin + "/orders/" + id,
-                method: 'DELETE',
-                success: function success(response) {
-                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-orders");
-                    row.html("");
-                },
-                fail: function fail(status) {
-                    alert("Unknown error accoured");
-                    console.log(status);
-                }
-
-            });
-        }
-    }, {
-        key: "createEditForm",
-        value: function createEditForm(order) {
-            var modal = __WEBPACK_IMPORTED_MODULE_1_jquery__('#modal');
-            var modalContent = __WEBPACK_IMPORTED_MODULE_1_jquery__('#modal-content');
-            modalContent.html("");
-            modalContent.append("\n            <input type=\"button\" id=\"btn-cancel\" class=\"fa fa-times\" value=&#xf00d>");
-            modal.find('#btn-cancel').on('click', function () {
-                modal.toggle('fast');
-            });
-
-            var options = '';
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/" + order.id + "/items", function (items) {
-                var orderItems = __WEBPACK_IMPORTED_MODULE_1_jquery__("<table class=\"admin-table modal-content\" id=\"tbl-orderitems\"/>");
-                orderItems.append("<tr> <th>Id</th>  <th>Name</th> <th>Price</th> <th>Quantity</th> <th>Value</th> <th> </th> </tr>");
-
-                var _loop2 = function _loop2(i) {
-                    var quantity = __WEBPACK_IMPORTED_MODULE_1_jquery__("<td><input type=\"number\" min=\"0\" step=\"1\" value=\"" + items[i].order_items_quantity + "\"></td>");
-                    quantity.find('input').on('change', function () {
-                        var _this = this;
-
-                        var newQuantity = __WEBPACK_IMPORTED_MODULE_1_jquery__(this).val();
-                        __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
-                            url: window.location.origin + "/orderItems/" + items[i]['id'],
-                            method: 'PUT',
-                            data: {
-                                'order_items_quantity': newQuantity
-                            },
-                            success: function success(response) {
-                                if (response === '1') {
-                                    __WEBPACK_IMPORTED_MODULE_1_jquery__(_this).parent().parent().html("");
-                                } else {
-                                    __WEBPACK_IMPORTED_MODULE_1_jquery__(_this).parent().next().text(Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(response['item']['order_items_quantity'] * response['item_price'] * 100) / 100 + " PLN");
-                                    var rows = __WEBPACK_IMPORTED_MODULE_1_jquery__("#tbl-orders tr");
-                                    for (var _i = 0; _i < rows.length; _i++) {
-                                        if (rows[_i].childNodes[0].innerHTML == response['order']['id']) rows[_i].childNodes[3].innerHTML = Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(response['order']['total_price'] * 100) / 100 + " PLN";
-                                    }
-                                }
-                            }
-                        });
-                    });
-                    var tr = __WEBPACK_IMPORTED_MODULE_1_jquery__("\n                <tr>    \n                    <td>" + items[i].id + "</td>\n                    <td>" + items[i].product.name + "</td>\n                    <td>" + items[i].product.price + " PLN</td>\n                </tr>");
-                    tr.append(quantity);
-                    tr.append("\n                    <td>" + Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(items[i].order_items_quantity * items[i].product.price * 100) / 100 + " PLN</td>\n                    <td></td>\n                    <td></td>");
-                    orderItems.append(tr);
-                };
-
-                for (var i = 0; i < items.length; i++) {
-                    _loop2(i);
-                }
-                modalContent.append(orderItems);
-            });
-
-            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/status/codes/", function (statusCodes) {
-                for (var i = 0; i < statusCodes.length; i++) {
-                    var selected = statusCodes[i].id === order.status_code ? "selected" : "";
-                    options += "<option value=\"" + statusCodes[i].id + "\" " + selected + ">" + statusCodes[i].description + "</option>";
-                }
-            }).done(function () {
-                var form = __WEBPACK_IMPORTED_MODULE_1_jquery__("\n                <form method=\"POST\" action=\"/orders/" + order.id + "\" class=\"modal-content\">\n                    <input type=\"hidden\" name=\"_method\" value=\"PUT\">\n                    <label for=\"order_details\">Order details</label><textarea name=\"order_details\"></textarea>\n                    <label for=\"status\">Status</label> <select name=status>" + options + "</select>\n                    <hr>\n                    <label for=\"first_name\">First name</label>  <input type=\"text\" name=\"first_name\" value=\"" + order.first_name + "\">\n                    <label for=\"second_name\">Second name</label><input type=\"text\" name=\"second_name\" value=\"" + order.second_name + "\"><br>\n                    <label for=\"surname\">Surname</label>        <input type=\"text\" name=\"surname\" value=\"" + order.surname + "\"><br>\n                    <label for=\"email\">Email</label>            <input type=\"email\" name=\"email\" value=\"" + order.email + "\"><br>\n                    <label for=\"phone\">Phone</label>            <input type=\"tel\"  name=\"phone\" value=\"" + order.phone + "\"><br>\n                    <label for=\"country\">Country</label>        <input type=\"text\" name=\"country\" value=\"" + order.country + "\">\n                    <label for=\"state\">State</label>            <input type=\"text\" name=\"state\" value=\"" + order.state + "\"><br>\n                    <label for=\"city\">City</label>              <input type=\"text\" name=\"city\" value=\"" + order.city + "\">\n                    <label for=\"address\">Address</label>        <input type=\"text\" name=\"address\" value=\"" + order.address + "\"><br>\n                    <label for=\"zip-code\">Zip-code</label>      <input type=\"text\" name=\"zip_code\" value=\"" + order['zip_code'] + "\"><br>\n                                                                <input type=\"submit\" id=\"btn-submit\" class=\"fa fa-floppy-o\" value=&#xf0c7>\n\n                    <input type=\"hidden\" name=\"_token\" value=\"" + __WEBPACK_IMPORTED_MODULE_1_jquery__('meta[name=csrf-token]').attr('content') + "\">\n                </form>");
-                modalContent.append(form);
-                modal.toggle('fast');
-            });
-        }
-    }]);
-
-    return Orders;
-}();
-
-/* harmony default export */ __webpack_exports__["default"] = (Orders);
-
-/***/ }),
-/* 5 */
+/***/ 2:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -27658,10 +27463,48 @@ var Orders = function () {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(2)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(3)(module)))
 
 /***/ }),
-/* 6 */
+
+/***/ 25:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(6);
+
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+
+/***/ 4:
 /***/ (function(module, exports) {
 
 var g;
@@ -27688,20 +27531,175 @@ module.exports = g;
 
 
 /***/ }),
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(4);
+/***/ 6:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+
+
+
+
+var Orders = function () {
+    function Orders() {
+        _classCallCheck(this, Orders);
+    }
+
+    _createClass(Orders, null, [{
+        key: "show",
+        value: function show(content) {
+            content.html("");
+            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + '/orders', function (data) {
+                var tr = void 0;
+                var table = __WEBPACK_IMPORTED_MODULE_1_jquery__("<table class='admin-table' id='tbl-orders'/>");
+                table.append("<tr>\n    <th>Id</th>\n    <th>Ordered by</th>\n    <th>Status</th>\n    <th>Price</th>\n    <th>Created</th>\n    <th>Updated</th>\n    <th> </th>\n    <th> </th>\n</tr>");
+
+                var _loop = function _loop(i) {
+                    var ordered_by = __WEBPACK_IMPORTED_MODULE_1_jquery__("<td>Unknown</td>");
+                    __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/users/" + data[i].customer_id, function (user) {
+                        ordered_by.html(user.first_name + " " + user.surname);
+                    });
+                    var status = __WEBPACK_IMPORTED_MODULE_1_jquery__("<td>Unknown</td>");
+                    __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/codes/" + data[i].status_code, function (code) {
+                        status.html("" + code.description);
+                    });
+                    var btn_edit = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-edit'><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i></button>");
+                    btn_edit.on('click', function () {
+                        Orders.edit(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
+                    });
+                    var btn_delete = __WEBPACK_IMPORTED_MODULE_1_jquery__("<button class='btn-delete'><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></button>");
+                    btn_delete.on('click', function () {
+                        Orders.delete(__WEBPACK_IMPORTED_MODULE_1_jquery__(this).parent().parent().find('td:first').text());
+                    });
+
+                    tr = __WEBPACK_IMPORTED_MODULE_1_jquery__('<tr/>');
+                    tr.append("<td>" + data[i].id + "</td>");
+
+                    tr.append(ordered_by);
+                    tr.append(status);
+                    tr.append("<td id='order_price'>" + data[i].total_price + "PLN </td>");
+                    tr.append("<td>" + data[i].created_at + "</td>");
+                    tr.append("<td>" + data[i].updated_at + "</td>");
+                    tr.append(__WEBPACK_IMPORTED_MODULE_1_jquery__("<td></td>").append(btn_edit));
+                    tr.append(__WEBPACK_IMPORTED_MODULE_1_jquery__("<td></td>").append(btn_delete));
+
+                    table.append(tr);
+                };
+
+                for (var i = 0; i < data.length; i++) {
+                    _loop(i);
+                }
+                content.append(table);
+            });
+        }
+    }, {
+        key: "edit",
+        value: function edit(id) {
+            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/" + id, function (data) {
+                Orders.createEditForm(data);
+            });
+        }
+    }, {
+        key: "delete",
+        value: function _delete(id) {
+            __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
+                url: window.location.origin + "/orders/" + id,
+                method: 'DELETE',
+                success: function success(response) {
+                    var row = Object(__WEBPACK_IMPORTED_MODULE_3__utils__["findTextInTable"])(id, "#tbl-orders");
+                    row.html("");
+                },
+                fail: function fail(status) {
+                    alert("Unknown error accoured");
+                    console.log(status);
+                }
+
+            });
+        }
+    }, {
+        key: "createEditForm",
+        value: function createEditForm(order) {
+            var modal = __WEBPACK_IMPORTED_MODULE_1_jquery__('#modal');
+            var modalContent = __WEBPACK_IMPORTED_MODULE_1_jquery__('#modal-content');
+            modalContent.html("");
+            modalContent.append("\n            <input type=\"button\" id=\"btn-cancel\" class=\"fa fa-times\" value=&#xf00d>");
+            modal.find('#btn-cancel').on('click', function () {
+                modal.toggle('fast');
+            });
+
+            var options = '';
+            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/" + order.id + "/items", function (items) {
+                var orderItems = __WEBPACK_IMPORTED_MODULE_1_jquery__("<table class=\"admin-table modal-content\" id=\"tbl-orderitems\"/>");
+                orderItems.append("<tr> <th>Id</th>  <th>Name</th> <th>Price</th> <th>Quantity</th> <th>Value</th> <th> </th> </tr>");
+
+                var _loop2 = function _loop2(i) {
+                    var quantity = __WEBPACK_IMPORTED_MODULE_1_jquery__("<td><input type=\"number\" min=\"0\" step=\"1\" value=\"" + items[i].order_items_quantity + "\"></td>");
+                    quantity.find('input').on('change', function () {
+                        var _this = this;
+
+                        var newQuantity = __WEBPACK_IMPORTED_MODULE_1_jquery__(this).val();
+                        __WEBPACK_IMPORTED_MODULE_1_jquery__["ajax"]({
+                            url: window.location.origin + "/orderItems/" + items[i]['id'],
+                            method: 'PUT',
+                            data: {
+                                'order_items_quantity': newQuantity
+                            },
+                            success: function success(response) {
+                                if (response === '1') {
+                                    __WEBPACK_IMPORTED_MODULE_1_jquery__(_this).parent().parent().html("");
+                                } else {
+                                    __WEBPACK_IMPORTED_MODULE_1_jquery__(_this).parent().next().text(Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(response['item']['order_items_quantity'] * response['item_price'] * 100) / 100 + " PLN");
+                                    var rows = __WEBPACK_IMPORTED_MODULE_1_jquery__("#tbl-orders tr");
+                                    for (var _i = 0; _i < rows.length; _i++) {
+                                        if (rows[_i].childNodes[0].innerHTML == response['order']['id']) rows[_i].childNodes[3].innerHTML = Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(response['order']['total_price'] * 100) / 100 + " PLN";
+                                    }
+                                }
+                            }
+                        });
+                    });
+                    var tr = __WEBPACK_IMPORTED_MODULE_1_jquery__("\n                <tr>    \n                    <td>" + items[i].id + "</td>\n                    <td>" + items[i].product.name + "</td>\n                    <td>" + items[i].product.price + " PLN</td>\n                </tr>");
+                    tr.append(quantity);
+                    tr.append("\n                    <td>" + Object(__WEBPACK_IMPORTED_MODULE_0_lodash__["floor"])(items[i].order_items_quantity * items[i].product.price * 100) / 100 + " PLN</td>\n                    <td></td>\n                    <td></td>");
+                    orderItems.append(tr);
+                };
+
+                for (var i = 0; i < items.length; i++) {
+                    _loop2(i);
+                }
+                modalContent.append(orderItems);
+            });
+
+            __WEBPACK_IMPORTED_MODULE_1_jquery__["getJSON"](window.location.origin + "/orders/status/codes/", function (statusCodes) {
+                for (var i = 0; i < statusCodes.length; i++) {
+                    var selected = statusCodes[i].id === order.status_code ? "selected" : "";
+                    options += "<option value=\"" + statusCodes[i].id + "\" " + selected + ">" + statusCodes[i].description + "</option>";
+                }
+            }).done(function () {
+                var form = __WEBPACK_IMPORTED_MODULE_1_jquery__("\n                <form method=\"POST\" action=\"/orders/" + order.id + "\" class=\"modal-content\">\n                    <input type=\"hidden\" name=\"_method\" value=\"PUT\">\n                    <label for=\"order_details\">Order details</label><textarea name=\"order_details\"></textarea>\n                    <label for=\"status\">Status</label> <select name=status>" + options + "</select>\n                    <hr>\n                    <label for=\"first_name\">First name</label>  <input type=\"text\" name=\"first_name\" value=\"" + order.first_name + "\">\n                    <label for=\"second_name\">Second name</label><input type=\"text\" name=\"second_name\" value=\"" + order.second_name + "\"><br>\n                    <label for=\"surname\">Surname</label>        <input type=\"text\" name=\"surname\" value=\"" + order.surname + "\"><br>\n                    <label for=\"email\">Email</label>            <input type=\"email\" name=\"email\" value=\"" + order.email + "\"><br>\n                    <label for=\"phone\">Phone</label>            <input type=\"tel\"  name=\"phone\" value=\"" + order.phone + "\"><br>\n                    <label for=\"country\">Country</label>        <input type=\"text\" name=\"country\" value=\"" + order.country + "\">\n                    <label for=\"state\">State</label>            <input type=\"text\" name=\"state\" value=\"" + order.state + "\"><br>\n                    <label for=\"city\">City</label>              <input type=\"text\" name=\"city\" value=\"" + order.city + "\">\n                    <label for=\"address\">Address</label>        <input type=\"text\" name=\"address\" value=\"" + order.address + "\"><br>\n                    <label for=\"zip-code\">Zip-code</label>      <input type=\"text\" name=\"zip_code\" value=\"" + order['zip_code'] + "\"><br>\n                                                                <input type=\"submit\" id=\"btn-submit\" class=\"fa fa-floppy-o\" value=&#xf0c7>\n\n                    <input type=\"hidden\" name=\"_token\" value=\"" + __WEBPACK_IMPORTED_MODULE_1_jquery__('meta[name=csrf-token]').attr('content') + "\">\n                </form>");
+                modalContent.append(form);
+                modal.toggle('fast');
+            });
+        }
+    }]);
+
+    return Orders;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Orders);
 
 /***/ })
-/******/ ]);
+
+/******/ });

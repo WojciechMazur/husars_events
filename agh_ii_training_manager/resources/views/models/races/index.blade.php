@@ -10,7 +10,6 @@
 @section('title', 'Races')
 
 @section('main-content')
-    @php(dump($items))
     <div class="product-list">
         <table class="tbl-races">
             <tr>

@@ -13,7 +13,14 @@ let mix = require('laravel-mix');
 
 mix.js( 'resources/assets/js/admin/admin.js',                           'public/js/admin')
     .js('resources/assets/js/admin/customers.js',                       'public/js/admin')
-    .js('resources/assets/js/admin/orders.js',                          'public/js/a1dmin')
+    .js('resources/assets/js/admin/products.js',                        'public/js/admin')
+    .js('resources/assets/js/admin/orders.js',                          'public/js/admin')
+    .js('resources/assets/js/admin/trainings.js',                       'public/js/admin')
+    .js('resources/assets/js/admin/training_reservations.js',           'public/js/admin')
+    .js('resources/assets/js/admin/races.js',                           'public/js/admin')
+    .js('resources/assets/js/admin/race_heats.js',                      'public/js/admin')
+    .js('resources/assets/js/admin/race_results.js',                    'public/js/admin')
+    .js('resources/assets/js/admin/race_registrations.js',              'public/js/admin')
 
     .js('resources/assets/js/user/shop.js',                             'public/js/user')
     .js('resources/assets/js/user/trainings.js',                        'public/js/user')

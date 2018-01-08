@@ -21,8 +21,8 @@ class CreateTrainingReservationsTable extends Migration
         });
 
         Schema::table('training_reservations', function (Blueprint $table){
-            $table->foreign('training_id')->references('id')->on('trainings');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('training_id')->references('id')->on('trainings')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
         });
     }
 

@@ -18,6 +18,20 @@ class TrainingsController extends Controller
      * @param $request
      * @return TrainingReservation|Response|int
      */
+    public function getTrainingReservations(Request $request){
+        $query = DB::table('training_reservations')
+            ->join('customers', 'customers.id', "=", 'training_reservations.customer_id')
+            ->join('trainings', 'trainings.id', "=", 'training_reservations.training_id')
+            ->select('training_reservations.*', 'trainings.date', 'trainings.location', 'trainings.capacity_limit', 'trainings.signed_in',
+                      'customers.id as customer_id', 'customers.first_name', 'customers.surname', 'customers.email');
+
+        if($request['training_id']!="*")
+            $query= $query->where('training_reservations.training_id', '=', $request['training_id']);
+        if($request['customer_id']!="*")
+            $query= $query->where('training_reservations.customer_id', '=', $request['customer_id']);
+        return $query->get();
+    }
+
     public function addTrainingReservation(Request $request){
         $oldReservation = DB::table('training_reservations')
             ->where('training_id', '=', $request['training_id'])
@@ -46,16 +60,19 @@ class TrainingsController extends Controller
     public function deleteTrainingReservation($id){
         $reservation=TrainingReservation::find($id);
         $training = $reservation->training()->first();
-        $training['signed_in']-=1;
+        $training['signed_in']= ($training['signed_in']>1) ? $training['signed_in']-1 : 0;
         $training->save();
         return TrainingReservation::destroy($id);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $items = Training::all();
         foreach ($items as $item){
             $item['trainer_details']=Trainer::find($item['trainer_id']);
+        }
+        if($request['api']){
+            return $items;
         }
         return view('models.trainings.index')->with('items',$items);
     }
@@ -121,10 +138,10 @@ class TrainingsController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Training  $training
-     * @return \Illuminate\Http\Response
+     * @return Response|int
      */
-    public function destroy(Training $training)
+    public function destroy($id)
     {
-        //
+       return Training::destroy($id);
     }
 }

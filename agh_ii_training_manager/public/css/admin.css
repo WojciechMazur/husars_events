@@ -8353,11 +8353,17 @@ button.close {
 .button-menu {
   width: 100%;
   background-color: transparent;
-  font-size: 115%;
+  font-size: 110%;
   text-align: left;
   border: none;
   -webkit-box-shadow: lightblue;
           box-shadow: lightblue;
+}
+
+.button-menu:hover {
+  color: cornflowerblue;
+  padding-left: 1rem;
+  font-size: 115%;
 }
 
 .admin-table {
@@ -8380,6 +8386,12 @@ button.close {
 
 .admin-table tr:nth-child(2) {
   background-color: #ffffff;
+}
+
+#btn-find {
+  width: 10rem;
+  padding-left: 1rem;
+  margin-left: 45%;
 }
 
 #modal {

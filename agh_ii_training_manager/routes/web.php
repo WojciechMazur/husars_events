@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return redirect("/products");
 });
 
 Route::resources([
@@ -50,7 +50,8 @@ Route::get('orders/{id}/items', 'OrderController@orderItems');
 Route::post('/races/register','RaceController@raceRegistration' );
 Route::delete('/races/register/{id}', 'RaceController@raceRegistrationCancel');
 
-Route::post('trainings/reservation','TrainingsController@addTrainingReservation');
+Route::get('trainings/reservations/index', 'TrainingsController@getTrainingReservations');
+Route::post('trainings/reservation/','TrainingsController@addTrainingReservation');
 Route::delete('trainings/reservation/{id}','TrainingsController@deleteTrainingReservation');
 
 Auth::routes();
